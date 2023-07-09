@@ -30,7 +30,10 @@ const MyContext = () => {
           },
         }}
       >
+        ContextChildLocalA:
         <ContextChildLocalA />
+
+        ContextChildLocalB:
         <ContextChildLocalB />
 
         {/* <ContextChildA/>  //Pendiente */}
@@ -50,12 +53,12 @@ const ContextChildLocalA: FC = () => {
     useContext(CounterContext);
   return (
     <>
-      <span>
+      <div className="box">
         <h3>Context Child Local A - state: {counterState}</h3>
         <button onClick={decrementCounter}>---</button>
         <button onClick={() => setCounterState(0)}>Reset</button>
         <button onClick={incrementCounter}>+++</button>
-      </span>
+      </div>
     </>
   );
 };
@@ -69,12 +72,12 @@ const ContextChildLocalB: FC = () => (
         setCounterState,
       }) => (
         <>
-          <span>
+          <div className="box">
             <h3>Context Child Local B - state: {counterState}</h3>
             <button onClick={decrementCounter}>---</button>
             <button onClick={() => setCounterState(0)}>Reset</button>
             <button onClick={incrementCounter}>+++</button>
-          </span>
+          </div>
         </>
       )}
     </CounterContext.Consumer>
