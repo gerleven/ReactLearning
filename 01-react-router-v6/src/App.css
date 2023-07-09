@@ -1,0 +1,10 @@
+.navBar{
+  background-color: hsl(234, 100%, 96%) !important;
+}
+
+.rounedBox{
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+  background-color: hsl(35, 100%, 96%); 
+}

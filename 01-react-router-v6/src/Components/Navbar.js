@@ -9,14 +9,20 @@ const Navbar = () => {
   return (
     <>
       <NavLink
-        className={({ isActive }) => (isActive ? "active" : "")}
         to="/users"
+        className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : "" }
       >
-        Users -{" "}
+        {"Users - "}
       </NavLink>
+      
       <NavLink
-        className={({ isActive }) => (isActive ? "active" : "")}
         to="/about"
+        style={({ isActive, isPending }) => {
+          return {
+            fontWeight: isPending ? "bold" : "",
+            color: isActive ? "red" : "black",
+          };
+        }}
       >
         About -{" "}
       </NavLink>

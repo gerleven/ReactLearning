@@ -2,3 +2,8 @@
   color: rgb(177, 43, 43);
   font-weight: bold;
 }
+
+.pending{
+  color: rgb(61, 177, 43);
+  font-weight: bold;
+}
