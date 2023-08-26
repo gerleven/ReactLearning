@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Componente from "./Components/Componente";
+import Componente from "./Components/01-Componente";
 import Propiedades from "./Components/Propiedades";
 import Estado from "./Components/Estado";
 import RenderizadoCondicional from "./Components/RenderizadoCondicional";
