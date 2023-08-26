@@ -10,6 +10,8 @@ interface Person {
 
 const Hooks = () => {
   /*Variables de estado*/
+
+  //useState con TypeScript
   const [value, setValue] = useState<number>(0);
   const [persona, setPersona] = useState<Person>({
     name: "german",
@@ -19,8 +21,10 @@ const Hooks = () => {
 
   /*Handles*/
   const handleClick = () => {
-    // setValue( value + 1); //ese value podria esta desactualizado
+
+    //setVariableEstado con (prev)=>([...prev], new)
     setValue((prevValue) => prevValue + 1); //Forma correcta
+    // setValue( value + 1); //ese value podria esta desactualizado
     setPersona(
       (prevPersona: Person) => ({ ...prevPersona, name: "joaquin" } as Person)
     );
@@ -35,6 +39,7 @@ const Hooks = () => {
     console.log(dias);
   });
 
+  //Sañiamieno en useEffect
   useEffect(() => {
     console.log("Eefcto 2");
     const handleKeyListener = (e: KeyboardEvent) => {

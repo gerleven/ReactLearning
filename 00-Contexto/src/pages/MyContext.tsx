@@ -12,23 +12,24 @@ export const CounterContext = createContext<CounterContextInterface>({} as Count
 
 const MyContext = () => {
   const [counterState, setCounterState] = useState(0);
+  const contextDefaultValue = {
+    counterState: counterState,
+    incrementCounter: () => {
+      setCounterState((prevState) => prevState + 1);
+    },
+    decrementCounter: () => {
+      setCounterState((prevState) => prevState - 1);
+    },
+    setCounterState: (value: number) => {
+      setCounterState(value);
+    },
+  }
 
   return (
     <>
       <h1>Context!</h1>
       <CounterContext.Provider
-        value={{
-          counterState: counterState,
-          incrementCounter: () => {
-            setCounterState((prevState) => prevState + 1);
-          },
-          decrementCounter: () => {
-            setCounterState((prevState) => prevState - 1);
-          },
-          setCounterState: (value: number) => {
-            setCounterState(value);
-          },
-        }}
+        value={contextDefaultValue}
       >
         ContextChildLocalA:
         <ContextChildLocalA />
@@ -48,6 +49,7 @@ const MyContext = () => {
 
 export default MyContext;
 
+//Leer el contexto con useContext
 const ContextChildLocalA: FC = () => {
   const { counterState, incrementCounter, decrementCounter, setCounterState } =
     useContext(CounterContext);
@@ -62,6 +64,8 @@ const ContextChildLocalA: FC = () => {
     </>
   );
 };
+
+//Leer el contexto con <miContexto.Consumer>
 const ContextChildLocalB: FC = () => (
   <>
     <CounterContext.Consumer>
