@@ -20,7 +20,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <section>
+        
+        {/* Componente */}
+        <Componente mensaje="Este Mensaje viene desde el padre"></Componente>
 
         
         {/* <section>
@@ -32,11 +34,8 @@ function App() {
         {/* <section>
           <img src={logo} className="App-logo" alt="logo" />
         </section> */}
-        {/* <section>
-          <Componente mensaje="Este Mensaje viene desde el padre"></Componente>
-        </section>
         <hr/>
-        <section>
+        {/* <section>
           <Propiedades
             cadena = "Una cadena"
             numero = {99}
@@ -47,27 +46,27 @@ function App() {
             elementoReact = {<h6>Elemento React</h6>}
             componenteReact = {<Componente mensaje="Componente pasado como Prop"/>}
             />
-        </section>
+        </section> */}
             <hr/>
-            <section>
+            {/* <section>
           <Listas />
-        </section>
-         */}
+        </section> */}
+        
         {/* <hr />
         <Contador />
         <Contador2 />
         <Contador2 titulo="likes" /> */}
         {/* <Reloj /> */}
         {/* <PokeApi /> */}
-        </section>
-        <ContadorHooks></ContadorHooks>
+        
+        {/* <ContadorHooks></ContadorHooks> */}
         <br></br>
         <hr></hr>
-        {relojVisible ? <RelojHooks /> : null}
-        <button onClick={()=>{setRelojVisible(!relojVisible)}}>
+        {/* {relojVisible ? <RelojHooks /> : null} */}
+        {/* <button onClick={()=>{setRelojVisible(!relojVisible)}}>
           {relojVisible?"Ocultar Reloj":"Mostrar Reloj"}
-        </button>
-        <ApiHooks/>
+        </button> */}
+        {/* <ApiHooks/> */}
       </header>
     </div>
   );
