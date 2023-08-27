@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "workspaces": [
+    "01-Componentes",
+    "00-App Base"
+  ],
+  "packages": {}
+}
