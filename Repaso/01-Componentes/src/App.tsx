@@ -43,6 +43,7 @@ interface PropsComponenteFuncional{
 function ComponenteFuncional(props:PropsComponenteFuncional){
   return <p><span className="componente"><b>Componente Funcional: </b>{props.prop1} - {props.prop2}</span></p>
 }
+//Si no usas TypeScript podes usar import PropTypes from 'prop-types' y despues hacer ComponenteFuncional.defaultProps={prop1: "valor por defecto"}
 
 //Componente Funcional con destructuracion y valores por defecto
 function ComponenteFuncionalDestructurado({prop1="prop1 por defecto", prop2=999}:PropsComponenteFuncional){
@@ -72,15 +73,22 @@ export class ComponenteDeClase extends Component <PropsComponenteDeClase,StateCo
     super(props);
     this.state = { stateMensaje: props.mensaje };
   }
-  
+
+  updateState = ()=>{
+    this.setState(prevState => ({
+      stateMensaje: prevState.stateMensaje+" -> Updated!",
+    }));
+  }
+
   render(){
     const {mensaje} = this.props;
-    const {stateMensaje} = this.state;
+    const {stateMensaje} = this.state;    
     
     return <div className='componente'>
       <p><span><b>Componente de clase con valor por defecto en las props.</b> {mensaje}</span></p>
       <p><span><b>prop recibida:</b> {mensaje}</span></p>
       <p><span><b>State de la clase:</b> {stateMensaje}</span></p>
+      <button onClick={this.updateState}>Update State</button>
     </div>
   }
 }
