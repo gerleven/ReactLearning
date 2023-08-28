@@ -33,7 +33,7 @@ class ComponenteClaseStateProps extends Component<PropsInterface, StateInterface
     const { localStatus } = this.state;
 
     return (
-      <div className='componente' style={{width: "30vw"}}>
+      <div className='componente'>
         <div>
           <b>Recived Status:</b><span>{recivedStatus?"True":"False"}</span>
         </div>
