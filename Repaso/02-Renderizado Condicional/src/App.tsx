@@ -6,19 +6,19 @@ function App() {
   const [editMode, setEditMode] = useState<boolean|string>("hola");
   return (
     <>
-    <div className='componente animate__animated animate__infinite animate__pulse'>Hola</div>
-    
+    {/*Operador &&*/}
     {loading && <Loader />}
-      
+    
+    {/*Operador Ternario*/}
     {editMode ? <EditForm /> : <ViewForm />}
 
+    {/* Uso de if else dentro de una arrow function*/}
     {
       ()=>{
         if(editMode==true){<EditForm/>}
         else {<ViewForm/>}
       }
     }
-
 
     {/* Uso de switch dentro del método render() */}
     {(() => {
