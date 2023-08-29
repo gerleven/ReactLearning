@@ -1,6 +1,6 @@
-import {React, Component, Fragment} from 'react';
+import {Component, Fragment} from 'react';
 
-const Componente = ({mensaje})=>
+const Componente = ({mensaje}:any)=>
     <>
         <div>Usando funcion en una variable const con arrow function:</div>
         <div>{mensaje}</div>

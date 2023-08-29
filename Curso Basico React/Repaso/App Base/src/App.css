@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.componente{
+  background-color: #61dafb;
+  border: #282c34 2px solid;
+  border-radius: 5px;
+  padding: 0 15px;
+  width: 30vw;
+  color: black;
+  font-size: medium;
+  
+}
