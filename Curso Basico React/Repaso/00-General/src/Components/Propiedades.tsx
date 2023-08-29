@@ -13,16 +13,15 @@ Propiedades.propTypes = {
 //Si usas Type Script:
 
 interface PropInterface{
-porDefecto?: any;
-cadena?: string;
-numero?: number;
-booleano?: boolean;
-arreglo?: any[];
-objeto?: {curso?: string, donde?: string};
-funcion?: (a: any)=>any;
-elementoReact?: any;
-componenteReact?: any;
-
+  porDefecto?: any;
+  cadena?: string;
+  numero?: number;
+  booleano?: boolean;
+  arreglo?: any[];
+  objeto?: {curso?: string, donde?: string};
+  funcion?: (a: any)=>any;
+  elementoReact?: any;
+  componenteReact?: any;
 }
 
 export default function Propiedades(props: PropInterface = {porDefecto: "valor por defecto"}) {
