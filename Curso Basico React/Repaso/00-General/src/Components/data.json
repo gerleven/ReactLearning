@@ -1,0 +1,601 @@
+[
+    {
+      "score": 0.7045636,
+      "show": {
+        "id": 28276,
+        "url": "https://www.tvmaze.com/shows/28276/the-witcher",
+        "name": "The Witcher",
+        "type": "Scripted",
+        "language": "English",
+        "genres": [
+          "Drama",
+          "Action",
+          "Fantasy"
+        ],
+        "status": "Running",
+        "runtime": null,
+        "averageRuntime": 58,
+        "premiered": "2019-12-20",
+        "ended": null,
+        "officialSite": "https://www.netflix.com/title/80189685",
+        "schedule": {
+          "time": "",
+          "days": [
+            
+          ]
+        },
+        "rating": {
+          "average": 8.1
+        },
+        "weight": 100,
+        "network": null,
+        "webChannel": {
+          "id": 1,
+          "name": "Netflix",
+          "country": null,
+          "officialSite": "https://www.netflix.com/"
+        },
+        "dvdCountry": null,
+        "externals": {
+          "tvrage": null,
+          "thetvdb": 362696,
+          "imdb": "tt5180504"
+        },
+        "image": {
+          "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/465/1163193.jpg",
+          "original": "https://static.tvmaze.com/uploads/images/original_untouched/465/1163193.jpg"
+        },
+        "summary": "<p>Based on the best-selling fantasy series, <b>The Witcher</b> is an epic tale of fate and family. Geralt of Rivia, a solitary monster hunter, struggles to find his place in a world where people often prove more wicked than beasts. But when destiny hurtles him toward a powerful sorceress, and a young princess with a dangerous secret, the three must learn to navigate the increasingly volatile Continent together.</p>",
+        "updated": 1692565109,
+        "_links": {
+          "self": {
+            "href": "https://api.tvmaze.com/shows/28276"
+          },
+          "previousepisode": {
+            "href": "https://api.tvmaze.com/episodes/2534865"
+          }
+        }
+      }
+    },
+    {
+      "score": 0.7045636,
+      "show": {
+        "id": 15299,
+        "url": "https://www.tvmaze.com/shows/15299/the-boys",
+        "name": "The Boys",
+        "type": "Scripted",
+        "language": "English",
+        "genres": [
+          "Drama",
+          "Action",
+          "Science-Fiction"
+        ],
+        "status": "Running",
+        "runtime": null,
+        "averageRuntime": 61,
+        "premiered": "2019-07-26",
+        "ended": null,
+        "officialSite": "https://www.amazon.com/dp/B07QQQ52B3",
+        "schedule": {
+          "time": "",
+          "days": [
+            "Friday"
+          ]
+        },
+        "rating": {
+          "average": 8.4
+        },
+        "weight": 100,
+        "network": null,
+        "webChannel": {
+          "id": 3,
+          "name": "Prime Video",
+          "country": null,
+          "officialSite": "https://www.primevideo.com"
+        },
+        "dvdCountry": null,
+        "externals": {
+          "tvrage": null,
+          "thetvdb": 355567,
+          "imdb": "tt1190634"
+        },
+        "image": {
+          "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/445/1113531.jpg",
+          "original": "https://static.tvmaze.com/uploads/images/original_untouched/445/1113531.jpg"
+        },
+        "summary": "<p>In a world where superheroes embrace the darker side of their massive celebrity and fame, <b>The Boys</b> centres on a group of vigilantes known informally as \"The Boys,\" who set out to take down corrupt superheroes with no more than blue collar grit and a willingness to fight dirty.</p>",
+        "updated": 1675540225,
+        "_links": {
+          "self": {
+            "href": "https://api.tvmaze.com/shows/15299"
+          },
+          "previousepisode": {
+            "href": "https://api.tvmaze.com/episodes/2249044"
+          }
+        }
+      }
+    },
+    {
+      "score": 0.7045636,
+      "show": {
+        "id": 38963,
+        "url": "https://www.tvmaze.com/shows/38963/the-mandalorian",
+        "name": "The Mandalorian",
+        "type": "Scripted",
+        "language": "English",
+        "genres": [
+          "Action",
+          "Adventure",
+          "Science-Fiction"
+        ],
+        "status": "Running",
+        "runtime": null,
+        "averageRuntime": 40,
+        "premiered": "2019-11-12",
+        "ended": null,
+        "officialSite": "https://www.disneyplus.com/series/the-mandalorian/3jLIGMDYINqD/",
+        "schedule": {
+          "time": "",
+          "days": [
+            "Wednesday"
+          ]
+        },
+        "rating": {
+          "average": 8.6
+        },
+        "weight": 100,
+        "network": null,
+        "webChannel": {
+          "id": 287,
+          "name": "Disney+",
+          "country": null,
+          "officialSite": "https://www.disneyplus.com/"
+        },
+        "dvdCountry": null,
+        "externals": {
+          "tvrage": null,
+          "thetvdb": 361753,
+          "imdb": "tt8111088"
+        },
+        "image": {
+          "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/444/1112115.jpg",
+          "original": "https://static.tvmaze.com/uploads/images/original_untouched/444/1112115.jpg"
+        },
+        "summary": "<p>After the stories of Jango and Boba Fett, another warrior emerges in the Star Wars universe. <b>The Mandalorian</b> is set after the fall of the Empire and before the emergence of the First Order. We follow the travails of a lone gunfighter in the outer reaches of the galaxy far from the authority of the New Republic...</p>",
+        "updated": 1689065547,
+        "_links": {
+          "self": {
+            "href": "https://api.tvmaze.com/shows/38963"
+          },
+          "previousepisode": {
+            "href": "https://api.tvmaze.com/episodes/2494396"
+          }
+        }
+      }
+    },
+    {
+      "score": 0.7044908,
+      "show": {
+        "id": 42827,
+        "url": "https://www.tvmaze.com/shows/42827/the-sandman",
+        "name": "The Sandman",
+        "type": "Scripted",
+        "language": "English",
+        "genres": [
+          "Drama",
+          "Fantasy"
+        ],
+        "status": "Running",
+        "runtime": null,
+        "averageRuntime": 48,
+        "premiered": "2022-08-05",
+        "ended": null,
+        "officialSite": "https://thesandman.com/",
+        "schedule": {
+          "time": "",
+          "days": [
+            
+          ]
+        },
+        "rating": {
+          "average": 7.6
+        },
+        "weight": 100,
+        "network": null,
+        "webChannel": {
+          "id": 1,
+          "name": "Netflix",
+          "country": null,
+          "officialSite": "https://www.netflix.com/"
+        },
+        "dvdCountry": null,
+        "externals": {
+          "tvrage": null,
+          "thetvdb": 366211,
+          "imdb": "tt1751634"
+        },
+        "image": {
+          "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/417/1042644.jpg",
+          "original": "https://static.tvmaze.com/uploads/images/original_untouched/417/1042644.jpg"
+        },
+        "summary": "<p>A rich blend of modern myth and dark fantasy in which contemporary fiction, historical drama and legend are seamlessly interwoven, <b>The Sandman</b> follows the people and places affected by Morpheus, the Dream King, as he mends the cosmic — and human — mistakes he's made during his vast existence.</p>",
+        "updated": 1674943796,
+        "_links": {
+          "self": {
+            "href": "https://api.tvmaze.com/shows/42827"
+          },
+          "previousepisode": {
+            "href": "https://api.tvmaze.com/episodes/2376074"
+          }
+        }
+      }
+    },
+    {
+      "score": 0.7044908,
+      "show": {
+        "id": 20263,
+        "url": "https://www.tvmaze.com/shows/20263/the-orville",
+        "name": "The Orville",
+        "type": "Scripted",
+        "language": "English",
+        "genres": [
+          "Comedy",
+          "Adventure",
+          "Science-Fiction"
+        ],
+        "status": "To Be Determined",
+        "runtime": null,
+        "averageRuntime": 63,
+        "premiered": "2017-09-10",
+        "ended": null,
+        "officialSite": "https://www.hulu.com/series/the-orville-21e70fbf-6a51-41b3-88e9-f111830b046c",
+        "schedule": {
+          "time": "02:00",
+          "days": [
+            "Thursday"
+          ]
+        },
+        "rating": {
+          "average": 7.7
+        },
+        "weight": 100,
+        "network": null,
+        "webChannel": {
+          "id": 2,
+          "name": "Hulu",
+          "country": {
+            "name": "United States",
+            "code": "US",
+            "timezone": "America/New_York"
+          },
+          "officialSite": "https://www.hulu.com/"
+        },
+        "dvdCountry": null,
+        "externals": {
+          "tvrage": null,
+          "thetvdb": 328487,
+          "imdb": "tt5691552"
+        },
+        "image": {
+          "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/445/1113833.jpg",
+          "original": "https://static.tvmaze.com/uploads/images/original_untouched/445/1113833.jpg"
+        },
+        "summary": "<p><b>The Orville</b> is a live-action, one-hour space adventure series set 400 years in the future that follows The Orville, a mid-level exploratory spaceship. Its crew, both human and alien, face the wonders and dangers of outer space, while also dealing with the familiar, often humorous problems of everyday life.</p>",
+        "updated": 1675579316,
+        "_links": {
+          "self": {
+            "href": "https://api.tvmaze.com/shows/20263"
+          },
+          "previousepisode": {
+            "href": "https://api.tvmaze.com/episodes/2288920"
+          }
+        }
+      }
+    },
+    {
+      "score": 0.7044908,
+      "show": {
+        "id": 37781,
+        "url": "https://www.tvmaze.com/shows/37781/the-peripheral",
+        "name": "The Peripheral",
+        "type": "Scripted",
+        "language": "English",
+        "genres": [
+          "Drama",
+          "Science-Fiction"
+        ],
+        "status": "Ended",
+        "runtime": null,
+        "averageRuntime": 63,
+        "premiered": "2022-10-21",
+        "ended": "2022-12-02",
+        "officialSite": "https://www.amazon.com/dp/B0B8TK4JMK",
+        "schedule": {
+          "time": "",
+          "days": [
+            "Friday"
+          ]
+        },
+        "rating": {
+          "average": 7.7
+        },
+        "weight": 100,
+        "network": null,
+        "webChannel": {
+          "id": 3,
+          "name": "Prime Video",
+          "country": null,
+          "officialSite": "https://www.primevideo.com"
+        },
+        "dvdCountry": null,
+        "externals": {
+          "tvrage": null,
+          "thetvdb": 349187,
+          "imdb": "tt8291284"
+        },
+        "image": {
+          "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/445/1112626.jpg",
+          "original": "https://static.tvmaze.com/uploads/images/original_untouched/445/1112626.jpg"
+        },
+        "summary": "<p><b>The Peripheral</b> revolves around Flynne Fisher, a woman in a near-future America in which technology has started to subtly alter society. Flynne discovers a hidden connection to a very different reality — and the dark future of her own.</p>",
+        "updated": 1692404105,
+        "_links": {
+          "self": {
+            "href": "https://api.tvmaze.com/shows/37781"
+          },
+          "previousepisode": {
+            "href": "https://api.tvmaze.com/episodes/2389679"
+          }
+        }
+      }
+    },
+    {
+      "score": 0.7044908,
+      "show": {
+        "id": 32938,
+        "url": "https://www.tvmaze.com/shows/32938/the-rookie",
+        "name": "The Rookie",
+        "type": "Scripted",
+        "language": "English",
+        "genres": [
+          "Drama",
+          "Crime"
+        ],
+        "status": "Running",
+        "runtime": 60,
+        "averageRuntime": 60,
+        "premiered": "2018-10-16",
+        "ended": null,
+        "officialSite": "https://abc.com/shows/the-rookie",
+        "schedule": {
+          "time": "20:00",
+          "days": [
+            "Tuesday"
+          ]
+        },
+        "rating": {
+          "average": 8
+        },
+        "weight": 100,
+        "network": {
+          "id": 3,
+          "name": "ABC",
+          "country": {
+            "name": "United States",
+            "code": "US",
+            "timezone": "America/New_York"
+          },
+          "officialSite": "https://abc.com/"
+        },
+        "webChannel": null,
+        "dvdCountry": null,
+        "externals": {
+          "tvrage": null,
+          "thetvdb": 350665,
+          "imdb": "tt7587890"
+        },
+        "image": {
+          "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/423/1058254.jpg",
+          "original": "https://static.tvmaze.com/uploads/images/original_untouched/423/1058254.jpg"
+        },
+        "summary": "<p><b>The Rookie</b> is inspired by a true story. John Nolan is the oldest rookie in the LAPD. At an age where most are at the peak of their career, Nolan cast aside his comfortable, small town life and moved to L.A. to pursue his dream of being a cop. Now, surrounded by rookies twenty years his junior, Nolan must navigate the dangerous, humorous and unpredictable world of a \"young\" cop, determined to make his second shot at life count.</p>",
+        "updated": 1692377438,
+        "_links": {
+          "self": {
+            "href": "https://api.tvmaze.com/shows/32938"
+          },
+          "previousepisode": {
+            "href": "https://api.tvmaze.com/episodes/2510657"
+          }
+        }
+      }
+    },
+    {
+      "score": 0.7044908,
+      "show": {
+        "id": 69,
+        "url": "https://www.tvmaze.com/shows/69/the-blacklist",
+        "name": "The Blacklist",
+        "type": "Scripted",
+        "language": "English",
+        "genres": [
+          "Drama",
+          "Crime",
+          "Thriller"
+        ],
+        "status": "Ended",
+        "runtime": 60,
+        "averageRuntime": 60,
+        "premiered": "2013-09-23",
+        "ended": "2023-07-13",
+        "officialSite": "https://www.nbc.com/the-blacklist",
+        "schedule": {
+          "time": "22:00",
+          "days": [
+            "Thursday"
+          ]
+        },
+        "rating": {
+          "average": 8.1
+        },
+        "weight": 100,
+        "network": {
+          "id": 1,
+          "name": "NBC",
+          "country": {
+            "name": "United States",
+            "code": "US",
+            "timezone": "America/New_York"
+          },
+          "officialSite": "https://www.nbc.com/"
+        },
+        "webChannel": null,
+        "dvdCountry": null,
+        "externals": {
+          "tvrage": 35048,
+          "thetvdb": 266189,
+          "imdb": "tt2741602"
+        },
+        "image": {
+          "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/445/1113538.jpg",
+          "original": "https://static.tvmaze.com/uploads/images/original_untouched/445/1113538.jpg"
+        },
+        "summary": "<p><b>The Blacklist</b> is a crime drama involving a former government agent who turned into a high-profile criminal turning himself in to the FBI offering to help catch criminals.</p>",
+        "updated": 1692919340,
+        "_links": {
+          "self": {
+            "href": "https://api.tvmaze.com/shows/69"
+          },
+          "previousepisode": {
+            "href": "https://api.tvmaze.com/episodes/2538229"
+          }
+        }
+      }
+    },
+    {
+      "score": 0.70434433,
+      "show": {
+        "id": 54198,
+        "url": "https://www.tvmaze.com/shows/54198/the-bear",
+        "name": "The Bear",
+        "type": "Scripted",
+        "language": "English",
+        "genres": [
+          "Drama",
+          "Comedy",
+          "Food"
+        ],
+        "status": "To Be Determined",
+        "runtime": null,
+        "averageRuntime": 34,
+        "premiered": "2022-06-23",
+        "ended": null,
+        "officialSite": "https://www.hulu.com/series/the-bear-05eb6a8e-90ed-4947-8c0b-e6536cbddd5f",
+        "schedule": {
+          "time": "",
+          "days": [
+            
+          ]
+        },
+        "rating": {
+          "average": 7.5
+        },
+        "weight": 99,
+        "network": null,
+        "webChannel": {
+          "id": 2,
+          "name": "Hulu",
+          "country": {
+            "name": "United States",
+            "code": "US",
+            "timezone": "America/New_York"
+          },
+          "officialSite": "https://www.hulu.com/"
+        },
+        "dvdCountry": null,
+        "externals": {
+          "tvrage": null,
+          "thetvdb": 403294,
+          "imdb": "tt14452776"
+        },
+        "image": {
+          "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/465/1164115.jpg",
+          "original": "https://static.tvmaze.com/uploads/images/original_untouched/465/1164115.jpg"
+        },
+        "summary": "<p>Carmy, a young fine-dining chef, comes home to Chicago to run his family sandwich shop. As he fights to transform the shop and himself, he works alongside a rough-around-the-edges crew that ultimately reveal themselves as his chosen family.</p>",
+        "updated": 1687794489,
+        "_links": {
+          "self": {
+            "href": "https://api.tvmaze.com/shows/54198"
+          },
+          "previousepisode": {
+            "href": "https://api.tvmaze.com/episodes/2570365"
+          }
+        }
+      }
+    },
+    {
+      "score": 0.70434433,
+      "show": {
+        "id": 83,
+        "url": "https://www.tvmaze.com/shows/83/the-simpsons",
+        "name": "The Simpsons",
+        "type": "Animation",
+        "language": "English",
+        "genres": [
+          "Comedy",
+          "Family"
+        ],
+        "status": "Running",
+        "runtime": 30,
+        "averageRuntime": 30,
+        "premiered": "1989-12-17",
+        "ended": null,
+        "officialSite": "http://www.fox.com/the-simpsons/full-episodes",
+        "schedule": {
+          "time": "20:00",
+          "days": [
+            "Sunday"
+          ]
+        },
+        "rating": {
+          "average": 8.1
+        },
+        "weight": 99,
+        "network": {
+          "id": 4,
+          "name": "FOX",
+          "country": {
+            "name": "United States",
+            "code": "US",
+            "timezone": "America/New_York"
+          },
+          "officialSite": "https://www.fox.com/"
+        },
+        "webChannel": null,
+        "dvdCountry": null,
+        "externals": {
+          "tvrage": 6190,
+          "thetvdb": 71663,
+          "imdb": "tt0096697"
+        },
+        "image": {
+          "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/423/1058261.jpg",
+          "original": "https://static.tvmaze.com/uploads/images/original_untouched/423/1058261.jpg"
+        },
+        "summary": "<p><b>The Simpsons</b> is the longest running scripted show in US television history. It captures the adventures of Homer, Marge, Maggie, Bart and Lisa who are living in a fictional town called Springfield.</p>",
+        "updated": 1689471804,
+        "_links": {
+          "self": {
+            "href": "https://api.tvmaze.com/shows/83"
+          },
+          "previousepisode": {
+            "href": "https://api.tvmaze.com/episodes/2521340"
+          },
+          "nextepisode": {
+            "href": "https://api.tvmaze.com/episodes/2594029"
+          }
+        }
+      }
+    }
+  ]

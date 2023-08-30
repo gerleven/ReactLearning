@@ -1,7 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import Propiedades from './Components/Propiedades';
 import Componente from './Components/01-Componente';
+import Propiedades from './Components/02-Propiedades';
+import Listas from './Components/03-Listas';
+import DataJSON from './Components/04-DataJson';
+import data from "./Components/data.json"
 
 function App() {
 
@@ -20,6 +23,8 @@ function App() {
             elementoReact = {<h6>Elemento React</h6>}
             componenteReact = {<Componente mensaje="Componente pasado como Prop"/>}
             />
+            <DataJSON></DataJSON>
+            <Listas lista={data}></Listas>
       </header>
     </div>
     </>
