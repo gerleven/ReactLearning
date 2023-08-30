@@ -1,13 +1,10 @@
 import './App.css';
-import { Component, FC, Fragment } from 'react';
+import { Component, FC} from 'react';
 import ComponenteExterno from './Components/ComponenteExterno';
-import UserProfile from './Components/ComponenteClaseStateProps';
-import StatusActive from './Components/ComponenteClaseStateProps1';
-import ComponenteClaseStateProps from './Components/ComponenteClaseStateProps1';
 import React from 'react';
 
 
-function App() {
+export default function App() {
   
   return (
     <>
@@ -34,8 +31,6 @@ function App() {
     </>
   );
 }
-
-export default App;
 
 interface PropsInterface{
   prop1?: string,
