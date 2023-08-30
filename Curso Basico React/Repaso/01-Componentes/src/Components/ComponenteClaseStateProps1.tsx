@@ -10,7 +10,7 @@ interface StateInterface {
   localStatus: boolean
 }
 
-class ComponenteClaseStateProps extends Component<PropsInterface, StateInterface> {
+export default class ComponenteClaseStateProps extends Component<PropsInterface, StateInterface> {
   constructor(props: PropsInterface) {
     super(props);
 
@@ -46,5 +46,3 @@ class ComponenteClaseStateProps extends Component<PropsInterface, StateInterface
     );
   }
 }
-
-export default ComponenteClaseStateProps;

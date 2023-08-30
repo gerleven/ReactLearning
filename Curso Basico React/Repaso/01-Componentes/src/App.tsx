@@ -1,32 +1,35 @@
 import './App.css';
-import { Component, Fragment } from 'react';
+import { Component, FC, Fragment } from 'react';
 import ComponenteExterno from './Components/ComponenteExterno';
 import UserProfile from './Components/ComponenteClaseStateProps';
 import StatusActive from './Components/ComponenteClaseStateProps1';
 import ComponenteClaseStateProps from './Components/ComponenteClaseStateProps1';
+import React from 'react';
 
 
 function App() {
+  
   return (
     <>
-      Componente Funcional con prop1 y prop2:
-      <ComponenteFuncional prop1={"hola"} prop2={3}></ComponenteFuncional>
-      <ComponenteFuncionalDestructurado prop1={"hola"} prop2={2}></ComponenteFuncionalDestructurado>
+      <ComponenteFuncional prop1={"prop1"} prop2={2}></ComponenteFuncional>
+      <ComponenteFuncionalDestructurado prop1={"prop1"} prop2={2}></ComponenteFuncionalDestructurado>
+      <ComponenteFuncionAnonima prop1="prop1" prop2={2}></ComponenteFuncionAnonima>
+      <ComponenteFuncionAnonimaDestructurado prop1="prop1" prop2={2}></ComponenteFuncionAnonimaDestructurado>
       
       Componente Funcional sin props para ver las props por defecto:
       <ComponenteFuncionalDestructurado/>
       
-      <ComponenteFuncionalArrowFunction mensaje={"Hola"}/>
+      Componente Arrow Function:
+      <ComponenteFuncionalArrowFunction prop1={"prop1"}/>
       
+      Componente Externo:
       <ComponenteExterno mensaje="mensaje desde el padre"></ComponenteExterno>
       <ComponenteExterno ></ComponenteExterno>
       
       <br/>
+      Componente de CLase:
       <ComponenteDeClase></ComponenteDeClase>
       <ComponenteDeClase mensaje="Hola"></ComponenteDeClase>
-      <br/>
-      <ComponenteClaseStateProps recivedStatus={true}></ComponenteClaseStateProps>
-      <UserProfile username="German" age={20}></UserProfile>
       
     </>
   );
@@ -34,26 +37,35 @@ function App() {
 
 export default App;
 
-interface PropsComponenteFuncional{
+interface PropsInterface{
   prop1?: string,
   prop2?: number,
 }
 
 //Componente Funcional
-function ComponenteFuncional(props:PropsComponenteFuncional){
+function ComponenteFuncional(props:PropsInterface): JSX.Element {
   return <p><span className="componente"><b>Componente Funcional: </b>{props.prop1} - {props.prop2}</span></p>
 }
-//Si no usas TypeScript podes usar import PropTypes from 'prop-types' y despues hacer ComponenteFuncional.defaultProps={prop1: "valor por defecto"}
 
 //Componente Funcional con destructuracion y valores por defecto
-function ComponenteFuncionalDestructurado({prop1="prop1 por defecto", prop2=999}:PropsComponenteFuncional){
-  return <p><span className="componente"><b>Componente Funcional: </b>{prop1} - {prop2}</span></p>
+function ComponenteFuncionalDestructurado({prop1="prop1 por defecto", prop2=999}:PropsInterface): React.ReactElement {
+  return <p><span className="componente"><b>Componente Funcional con destructuracion: </b>{prop1} - {prop2}</span></p>
+}
+
+//Componente Funcional Funcion Anonima
+const ComponenteFuncionAnonima: FC<PropsInterface> = function (props): React.ReactElement{
+  return <p><span className="componente"><b>Componente Funcional Funcion anonima: </b>{props.prop1} - {props.prop2}</span></p>
+}
+
+//Componente Funcional Funcion Anonima y destructuracion
+const ComponenteFuncionAnonimaDestructurado: FC<PropsInterface> = function ({prop1, prop2}): React.ReactElement{
+  return <p><span className="componente"><b>Componente Funcional Funcion anonima y destructurado: </b>{prop1} - {prop2}</span></p>
 }
 
 //Componente Funcional Arrow Function
-const ComponenteFuncionalArrowFunction = ({mensaje}:{mensaje: string})=>(
-  <p><span className="componente"><b>Componente Funcional Arrow Function con destructuracion: </b>{mensaje}</span></p>
-)
+const ComponenteFuncionalArrowFunction: FC<PropsInterface> = ({prop1}):React.ReactElement=>(
+  <p><span className="componente"><b>Componente Funcional Arrow Function con destructuracion: </b>{prop1}</span></p>
+);
 
 //Componente de clase
 interface PropsComponenteDeClase{
