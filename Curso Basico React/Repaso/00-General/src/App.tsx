@@ -4,7 +4,7 @@ import Componente from './Components/01-Componente';
 import Propiedades from './Components/02-Propiedades';
 import Listas from './Components/03-Listas';
 import DataJSON from './Components/04-DataJson';
-import data from "./Components/data.json"
+import Eventos from './Components/05-Eventos';
 
 function App() {
 
@@ -24,7 +24,8 @@ function App() {
             componenteReact = {<Componente mensaje="Componente pasado como Prop"/>}
             />
             <DataJSON></DataJSON>
-            <Listas lista={data}></Listas>
+            <Listas></Listas>
+            <Eventos></Eventos>
       </header>
     </div>
     </>

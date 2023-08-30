@@ -1,4 +1,3 @@
-import {Component, Fragment} from 'react';
 import data from "./data.json"
 
 interface TvShow{
@@ -6,11 +5,11 @@ interface TvShow{
     show: any
 }
 
-const Listas = ({lista}: any)=>
+const Listas = ()=>
 {
     return <>
     <h6>TV SHOWS with Rating &gt; 8:</h6>
-        {lista.filter(
+        {data.filter(
             (x:TvShow)=>(x.show.rating.average>8)
             ).map(
                 (tvShow: TvShow)=>(
