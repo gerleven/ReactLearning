@@ -29,17 +29,22 @@ export default function App() {
       <ComponenteDeClase mensaje="Hola"></ComponenteDeClase>
 
       Children props:
-      <CustomButton prop1="Texto Custom Button"> <br></br> <span>Lo que haya entre las tags de CustomButon sera pasado como </span> <b>Children Prop!</b></CustomButton>
+      <CustomButton prop1="Wraped Custom Button" onMiEventoCustom={()=>{alert("Pushed!")}}> <br></br> <span>Lo que haya entre las tags de CustomButon sera pasado como </span> <b>Children Prop!</b></CustomButton>
       
     </>
   );
 }
 
-function CustomButton({prop1, children}: any){
+function CustomButton({prop1, onMiEventoCustom, children}: any){ //Aca implementamos un evento customizado onMiEventoCustom, ademas usamos la prop children que trae todo lo que tengamos entre las tags de apertura y cierre de CustomButton
+  
+  function handleOnClick(){
+    onMiEventoCustom();
+  }
+
   return <>
     <div className='componente'>
       {children}
-      <button>{prop1}</button>
+      <button onClick={handleOnClick}>{prop1}</button>  {/*Evento: onClick, funcion manejadora de evento: handleOnClick*/}
       {children}
     </div>
   </>
