@@ -25,7 +25,7 @@ function App() {
             />
             <DataJSON></DataJSON>
             <Listas></Listas>
-            <Eventos onCustomEvent={()=>{alert("Custom Event!")}}> <br></br><br></br><span>Children</span><b>del padre</b> </Eventos>
+            <Eventos onCustomEvent={()=>{alert("Custom Event!")}}> <br></br><br></br><span>Children </span><b>del padre</b> </Eventos>
       </header>
     </div>
     </>
