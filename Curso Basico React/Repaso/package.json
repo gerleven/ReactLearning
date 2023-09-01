@@ -1,8 +1,16 @@
 {
   "private": true,
   "workspaces": [
+    "00-General",
     "01-Componentes",
-    "00-App Base"
+    "02-Renderizado Condicional",
+    "03-fetch",
+    "04-Contexto",
+    "05-react-rutas",
+    "06-react-router-v6",
+    "07-Ruteo con parametros",
+    "App Base",
+    "Borrador"
   ],
   "packages": {}
 }
