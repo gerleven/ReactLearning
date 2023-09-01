@@ -1,6 +1,6 @@
 import './App.css';
 import { Component, FC} from 'react';
-import ComponenteExterno from './Components/ComponenteExterno';
+import ComponenteExterno from './Componentes/ComponenteExterno';
 import React from 'react';
 
 
@@ -27,9 +27,22 @@ export default function App() {
       Componente de CLase:
       <ComponenteDeClase></ComponenteDeClase>
       <ComponenteDeClase mensaje="Hola"></ComponenteDeClase>
+
+      Children props:
+      <CustomButton prop1="Texto Custom Button"> <br></br> <span>Lo que haya entre las tags de CustomButon sera pasado como </span> <b>Children Prop!</b></CustomButton>
       
     </>
   );
+}
+
+function CustomButton({prop1, children}: any){
+  return <>
+    <div className='componente'>
+      {children}
+      <button>{prop1}</button>
+      {children}
+    </div>
+  </>
 }
 
 interface PropsInterface{
