@@ -1,13 +1,32 @@
 import './App.css';
-import { Component, FC} from 'react';
+import { Component, FC, useState} from 'react';
 import ComponenteExterno from './Componentes/ComponenteExterno';
 import React from 'react';
+import ComponenteCicleDeVida from './Ciclo-de-vida/ComponenteCicloDeVida';
+import ComponenteFuncionalCicleDeVida from './Ciclo-de-vida/ComponenteFuncionalCicloDeVida';
 
 
 export default function App() {
+  const [show, setShow] = useState<boolean>(true);
+  const [show2, setShow2] = useState<boolean>(true);
   
   return (
     <>
+    Componente de clase con ciclo de vida:
+    <div className='componente'>
+      {show&&<ComponenteCicleDeVida prop1='hola' prop2={2}></ComponenteCicleDeVida>}
+      <button onClick={()=>{setShow(true)}}>Show Component</button>
+      <button onClick={()=>{setShow(false)}}>Hide Component</button>
+    </div>
+    Componente Funcional con ciclo de vida:
+    <div className='componente'>
+      {show2&&<ComponenteFuncionalCicleDeVida prop1='hola' prop2={2}></ComponenteFuncionalCicleDeVida>}
+      <button onClick={()=>{setShow2(true)}}>Show Component</button>
+      <button onClick={()=>{setShow2(false)}}>Hide Component</button>
+    </div>
+
+      
+      Componentes Funcionales:
       <ComponenteFuncional prop1={"prop1"} prop2={2}></ComponenteFuncional>
       <ComponenteFuncionalDestructurado prop1={"prop1"} prop2={2}></ComponenteFuncionalDestructurado>
       <ComponenteFuncionAnonima prop1="prop1" prop2={2}></ComponenteFuncionAnonima>
