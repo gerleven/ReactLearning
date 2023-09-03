@@ -72,7 +72,21 @@ function App() {
     // getDitto(); //Se esta llamando en el .then() de getPolemons2
     // getDitto().then((dittoResultJson)=>{setDitto(dittoResultJson);});
 
-    //Fetch con constructor Promise
+    //Fetch con constructor new Promise
+    function getPokemonsPromise(){
+      const url = "https://pokeapi.co/api/v2/pokemon/";
+      return new Promise<any>((resolve, reject)=>{
+            fetch(url).then(
+              async (stringResult)=>{
+                const jsonResult = await stringResult.json();
+                let results = jsonResult.results;
+                resolve(results);
+              },
+              (error)=>{alert("Error fetching with Promise"); reject(error)}
+            );
+          });
+    }
+    
     function getCharmanderJson(){
       const url = "https://pokeapi.co/api/v2/pokemon/charmander";
 
