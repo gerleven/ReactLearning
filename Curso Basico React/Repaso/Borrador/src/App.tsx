@@ -27,7 +27,7 @@ function App() {
   }
 
   //Fetch con Funcion Async await
-  const getPokemonsAsync = async ()=>{
+  const getPokemonsAsyncAwait = async ()=>{
     console.log("Using Async Await Fetch");
     try {
       const result = await fetch(url);
