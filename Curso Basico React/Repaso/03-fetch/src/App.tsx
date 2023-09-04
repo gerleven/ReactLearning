@@ -13,32 +13,35 @@ function App() {
 
   useEffect(()=>{
     // onInit();
-    // getPokemonsThenCatch();
-    // getPokemonsAsyncAwait();
-    // getPokemonsPromise();
-    getPokemonsAsyncAwait2();
+    //getPokemonsThenCatch();
+    //  getPokemonsAsyncAwait();
+    getPokemonsPromise();
+    //getPokemonsAsyncAwait2();
   },[]);
 
   //Fetch basico con .then() y .catch()
   function getPokemonsThenCatch(){
     fetch(url).then(
-      (pokeResultString)=>{return pokeResultString.json()},
+      (response_Object)=>{
+        const promiseWith_JSON_Result = response_Object.json(); //Este .json() transforma el objeto response en un objeto Promise, osea que retorna una promesa que cuando sea resulta tendra en su value el objecto json
+        //const arrayResults = promiseWith_JSON_Result.results; //Esto no tiene sentido, porque hasta aca promiseWith_JSON_Result no es un JSON, si no una promesa que cuando sea resuelta recien tendra un JSON en su valor, por lo tanto hasta que no se resuelva no podemos acceder al JSON.results
+        return promiseWith_JSON_Result},
       (error)=>{alert("Error: "+ error)}
       )
-    .then(
-      (pokeResultJson)=>{setPokemons(pokeResultJson.results);}
-    ).catch(
-      (error)=>{alert("Error: "+ error)}
-      )
+    .then((pokeResultObject)=>{ //Este Then recibe el valor de la promiseWith_JSON_Result resuelta, por lo tanto recibe el objecto json en el cual encontraremos el .results
+      setPokemons(pokeResultObject.results);
+    }).catch((error)=>{alert("Error: "+ error)})
   }
 
   //Fetch con Funcion Async await
   const getPokemonsAsyncAwait = async ()=>{
     console.log("Using Async Await Fetch");
     try {
-      const result = await fetch(url);
-      const jsonResult = await result.json();
-      setPokemons(jsonResult.results);
+      const response_Object = await fetch(url); //fetch retorna el objeto Response
+      const promiseWith_JSON_Result = response_Object.json(); //.json() retorna una Promisse aun no resulta cuyo valor sera el JSON results.
+      const pokeResultObject = await promiseWith_JSON_Result; //aca el await espera que se resulva la promesa y asignamos el objeto JSON a pokeResultObject.
+      //const pokeResultObject = await response_Object.json(); //La 2 lineas anteriores se pueden resumir en esta sola
+      setPokemons(pokeResultObject.results);
     } catch (error) {
       alert("Error fetching Pokemons with Async Await")
     }
