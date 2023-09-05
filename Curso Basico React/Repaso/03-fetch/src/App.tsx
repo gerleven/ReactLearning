@@ -12,7 +12,7 @@ function App() {
   const url = "https://pokeapi.co/api/v2/pokemon/";
 
   useEffect(()=>{
-    onInit();
+    start();
     //getPokemonsThenCatch();
     //  getPokemonsAsyncAwait();
     //getPokemonsNewPromise();
@@ -135,7 +135,7 @@ function App() {
     }
   }
 
-  function onInit(){
+  function start(){
     getPokemonsAsyncAwaitReturn().then(
         (pokeResultObject)=>{
           setPokemons(pokeResultObject.results);
