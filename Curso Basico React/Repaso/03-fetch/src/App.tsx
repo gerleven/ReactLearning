@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { rejects } from 'assert';
 
 
 function App() {
-  const [pokemons, setPokemons] = useState<any>(["pika", "char"]);
+  const [pokemons, setPokemons] = useState<any>([{name: "pika"}, {name: "char"}]);
   const [ditto, setDitto] = useState({});
   const [charmander, setCharmander] = useState<any>({});
   
   const url = "https://pokeapi.co/api/v2/pokemon/";
 
   useEffect(()=>{
-    start();
-    //getPokemonsThenCatch();
-    //  getPokemonsAsyncAwait();
-    //getPokemonsNewPromise();
-    //getPokemonsAsyncAwait2();
+    // startThenCatch();
+    // startAsyncAwait();
+    // startNewPromiseConstructor();
+    // startNewPromiseConstructorAsyncAwait();
+    // startNewPromiseConstructorAsyncAwaitNoResolve();
+    startFetchCained();
   },[]);
 
   //Fetch basico con .then() y .catch()
@@ -33,6 +33,11 @@ function App() {
     }).catch((error)=>{alert("Error: "+ error)})
   }
 
+  const startThenCatch=()=>{
+    console.log("start: ThenCatch");
+    getPokemonsThenCatch();
+  }
+
   //Fetch con Funcion Async await
   const getPokemonsAsyncAwait = async ()=>{
     try {
@@ -44,6 +49,10 @@ function App() {
     } catch (error) {
       alert("Error fetching Pokemons with Async Await")
     }
+  }
+  const startAsyncAwait=()=>{
+    console.log("start: AsyncAwait");
+    getPokemonsAsyncAwait();
   }
   
 
@@ -59,12 +68,17 @@ function App() {
           );
         });
   }
-  // getPokemonsNewPromise().then(
-  //     (pokeResultObject)=>{
-  //       const arrayResults = pokeResultObject.results;
-  //       setPokemons(arrayResults);
-  //     }
-  //   );
+
+  const startNewPromiseConstructor=()=>{
+    console.log("start: NewPromiseConstructor");
+    getPokemonsNewPromise().then(
+        (pokeResultObject)=>{
+          const arrayResults = pokeResultObject.results;
+          setPokemons(arrayResults);
+        }
+      );
+  }
+
 
 
   //Fetch con constructor new Promise + Async Await
@@ -81,9 +95,12 @@ function App() {
           );
         });
   }
-  // getPokemonsNewPromiseAsyncAwait().then(
-  //     (arrayResults)=>{setPokemons(arrayResults);}
-  //   );
+  const startNewPromiseConstructorAsyncAwait=()=>{
+    console.log("start: NewPromiseConstructorAsyncAwait");
+    getPokemonsNewPromiseAsyncAwait().then(
+        (arrayResults)=>{setPokemons(arrayResults);}
+      );
+  }
   
   function getPokemonsNewPromiseAsyncAwaitNoResolve(){
     return new Promise<any>((resolve, reject)=>{
@@ -97,6 +114,11 @@ function App() {
             (error)=>{alert("Error fetching with Promise"); reject(error)}
           );
         });
+  }
+
+  const startNewPromiseConstructorAsyncAwaitNoResolve=()=>{
+    console.log("start: NewPromiseConstructorAsyncAwaitNoResolve");
+    getPokemonsNewPromiseAsyncAwaitNoResolve();
   }
 
   //Chained Fetch
@@ -135,7 +157,8 @@ function App() {
     }
   }
 
-  function start(){
+  function startFetchCained(){
+    console.log("start: FetchCained");
     getPokemonsAsyncAwaitReturn().then(
         (pokeResultObject)=>{
           setPokemons(pokeResultObject.results);
