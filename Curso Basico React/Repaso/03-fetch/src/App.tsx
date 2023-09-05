@@ -12,10 +12,10 @@ function App() {
   const url = "https://pokeapi.co/api/v2/pokemon/";
 
   useEffect(()=>{
-    // onInit();
+    onInit();
     //getPokemonsThenCatch();
     //  getPokemonsAsyncAwait();
-    getPokemonsPromise();
+    //getPokemonsNewPromise();
     //getPokemonsAsyncAwait2();
   },[]);
 
@@ -35,7 +35,6 @@ function App() {
 
   //Fetch con Funcion Async await
   const getPokemonsAsyncAwait = async ()=>{
-    console.log("Using Async Await Fetch");
     try {
       const response_Object = await fetch(url); //fetch retorna el objeto Response
       const promiseWith_JSON_Result = response_Object.json(); //.json() retorna una Promisse aun no resulta cuyo valor sera el JSON results.
@@ -49,86 +48,115 @@ function App() {
   
 
   //Fetch con constructor new Promise
-  function getPokemonsPromise(){
+  function getPokemonsNewPromise(){
     return new Promise<any>((resolve, reject)=>{
           fetch(url).then(
-            async (stringResult)=>{
-              const jsonResult = await stringResult.json();
-              let results = jsonResult.results;
-              setPokemons(results);
-              resolve(results);
+            (response_Object)=>{
+              const promiseWith_JSON_Result = response_Object.json(); //.json() retorna una Promisse aun no resulta cuyo valor sera el JSON results.
+              resolve(promiseWith_JSON_Result);
+            },
+            (error)=>{alert("Error fetching with Promise"); reject(error)}
+          );
+        });
+  }
+  // getPokemonsNewPromise().then(
+  //     (pokeResultObject)=>{
+  //       const arrayResults = pokeResultObject.results;
+  //       setPokemons(arrayResults);
+  //     }
+  //   );
+
+
+  //Fetch con constructor new Promise + Async Await
+  function getPokemonsNewPromiseAsyncAwait(){
+    return new Promise<any>((resolve, reject)=>{
+          fetch(url).then(
+            async (response_Object)=>{
+              const promiseWith_JSON_Result = response_Object.json(); //.json() retorna una Promisse aun no resulta cuyo valor sera el JSON results.
+              const pokeResultObject = await promiseWith_JSON_Result;
+              const arrayResults = pokeResultObject.results;
+              resolve(arrayResults);
+            },
+            (error)=>{alert("Error fetching with Promise"); reject(error)}
+          );
+        });
+  }
+  // getPokemonsNewPromiseAsyncAwait().then(
+  //     (arrayResults)=>{setPokemons(arrayResults);}
+  //   );
+  
+  function getPokemonsNewPromiseAsyncAwaitNoResolve(){
+    return new Promise<any>((resolve, reject)=>{
+          fetch(url).then(
+            async (response_Object)=>{
+              const promiseWith_JSON_Result = response_Object.json(); //.json() retorna una Promisse aun no resulta cuyo valor sera el JSON results.
+              const pokeResultObject = await promiseWith_JSON_Result;
+              const arrayResults = pokeResultObject.results;
+              setPokemons(arrayResults);
             },
             (error)=>{alert("Error fetching with Promise"); reject(error)}
           );
         });
   }
 
-  //Fetch con funciones Async y Await y new Promise chained 
-  function getPokemonsAsyncAwait2(){
-      async function get(){
-        try {
-          const pokemonsResultString = await fetch(url);
-          const pokemonsResultJson = await pokemonsResultString.json();
-          setPokemons(pokemonsResultJson.results);
-          return true;
-        } catch (error) {
-          alert("Error al traer pokemons: "+error);
-        } 
-      }
-
-      get().then(
-        (result)=>{
-          getDitto().then(()=>{getCharmander();});   //Primero trae todos los pokemons, despues a dito y despues a charmander ponindolos primero en la lista.          
-        }
-      ).catch(
-        (error)=>{alert("Error fetching data:"+error)}
-      );
+  //Chained Fetch
+  async function getPokemonsAsyncAwaitReturn(){
+    try {
+      const response_Object = await fetch(url);
+      const promiseWith_JSON_Result = response_Object.json();
+      
+      return promiseWith_JSON_Result
+    } catch (error) {
+      alert("Error fetching Pokemons with Async Await "+error)
+    }
   }
 
-  //Fetch con funciones Async y Await
   async function getDitto(){
     const url = "https://pokeapi.co/api/v2/pokemon/ditto";
-  
     try {
-      const dittoResultString = await fetch(url);
-      const dittoResultJson = await dittoResultString.json();
-      setDitto(dittoResultJson);
-      setPokemons((prev: any)=>[dittoResultJson, ...prev]);
+      const response_Object = await fetch(url);
+      const promiseWith_JSON_Result = await response_Object.json();
+      return promiseWith_JSON_Result;
     }
     catch (error) {
       alert("Error al traer a Ditto: "+error)
     }
   }
 
-  function getCharmander(){
-    getCharmanderJson().then(
-      (charmanderJson)=>{
-        setCharmander(charmanderJson);
-        setPokemons((prev: any)=>[charmanderJson, ...prev]);
-      })
-      .catch((error)=>{alert("Error fetching Charmander: "+error)});
+  async function getCharmander(){
+    const url = "https://pokeapi.co/api/v2/pokemon/charmander";
+    try {
+      const response_Object = await fetch(url);
+      const promiseWith_JSON_Result = await response_Object.json();
+      return promiseWith_JSON_Result;
+    }
+    catch (error) {
+      alert("Error al traer a Charmander: "+error)
+    }
   }
 
-  function getCharmanderJson(){
-    const url = "https://pokeapi.co/api/v2/pokemon/charmander";
-
-    return new Promise((resolve, reject)=>{
-      fetch(url).then(
-        (responseString)=>{
-          const responseJson = responseString.json();
-          resolve(responseJson);
+  function onInit(){
+    getPokemonsAsyncAwaitReturn().then(
+        (pokeResultObject)=>{
+          setPokemons(pokeResultObject.results);
+          return getDitto();
+        },
+        (error)=>{alert("Error fetching pokemons "+error)}
+      )
+      .then(
+        (dittoResultObject)=>{
+          setPokemons((prev: any)=>[dittoResultObject, ...prev]);
+          return getCharmander();
         }
       )
-      .catch((error)=>{reject(error)});
-    });
+      .then(
+        (charmanderResultObject)=>{
+          setPokemons((prev: any)=>[charmanderResultObject, ...prev]);
+        }
+      ).finally(()=>{
+        console.log("Pokemons and ditto and charmader retrived!");
+      })
   }
-
-
-
-
-
-  
-
   
   return (
     <div className="App">
