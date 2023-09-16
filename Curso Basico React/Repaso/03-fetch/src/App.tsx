@@ -2,11 +2,18 @@ import { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+interface Book{
+  title: string,
+  description: string,
+  id: string,
+}
+
 
 function App() {
   const [pokemons, setPokemons] = useState<any>([{name: "pika"}, {name: "char"}]);
   const [ditto, setDitto] = useState({});
   const [charmander, setCharmander] = useState<any>({});
+  const [books, setBooks] = useState<Book[]>([] as Book[]);
   
   const url = "https://pokeapi.co/api/v2/pokemon/";
 
@@ -16,7 +23,8 @@ function App() {
     // startNewPromiseConstructor();
     // startNewPromiseConstructorAsyncAwait();
     // startNewPromiseConstructorAsyncAwaitNoResolve();
-    startFetchCained();
+    // startFetchCained();
+    getBooks();
   },[]);
 
   //Fetch basico con .then() y .catch()
@@ -180,6 +188,76 @@ function App() {
         console.log("Pokemons and ditto and charmader retrived!");
       })
   }
+
+  // Fetch Metodos
+  //Get:
+  const getBooks = ()=>{
+    //Para consumir la API de Books hecha en Node por micael gallegos:
+    //E:\Ger\Dev\Angular Learning\Curso Angular by Micael Gallego\Curso Angular 2021 - Ejemplos y ejercicios\Profesor\Ejercicios\ejer6_backend\node\src\app.js
+    //para correr la api ir a ese path y correr node src/app.js. luego usar la url http://127.0.0.1:8080/books/
+    fetch("http://127.0.0.1:8080/books/").then(
+      (response)=>{return response.json(); } //Aca el .json() convierte el objeto response en un objeto Promise
+    ).then((booksData)=>{ //cuando se resuelve la promesa que retorna el response.json() recibimos el array de libros en books
+      setBooks(booksData);
+    });
+  }
+
+  //Post
+  const createBook = ()=>{
+    const apiUrl = "http://127.0.0.1:8080/books/";
+    const newBook = {title: "nuevo libro", description: "la descripcion"}
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newBook),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Libro creado:', data);
+        getBooks();
+        // Aquí puedes actualizar tu estado de React o realizar otras acciones después de crear el libro
+      })
+      .catch(error => console.error('Error al crear el libro:', error));
+  }
+
+  //PUT
+  const updateBook =()=>{
+    const apiUrl = "http://127.0.0.1:8080/books/"+(books[books.length-1].id); //Actualiza siempre el ultimo libro
+    const newBook = {title: "nuevo libro actualizado", description: "la descripcion actualizada"}
+    fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newBook),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Libro Actualizado:', data);
+        getBooks();
+        // Aquí puedes actualizar tu estado de React o realizar otras acciones después de crear el libro
+      })
+      .catch(error => console.error('Error al actualizar el libro:', error));
+  }
+
+  //DELETE
+  const deleteBook=()=>{
+    const id = books[books.length-1].id; //Borra siempre el ultimo libro
+    const apiUrl = "http://127.0.0.1:8080/books/"+id;
+
+    fetch(apiUrl, {
+      method: "DELETE"
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('Error al eliminar el libro');
+      }
+      console.log('Libro eliminado exitosamente');
+      getBooks();
+    })
+    .catch(error => console.error('Error al eliminar el libro:', error));
+  }
   
   return (
     <div className="App">
@@ -187,7 +265,10 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>Fetch</p>
         <button onClick={()=>test(pokemons, ditto, charmander)}>Test</button>
-        <ResultBox pokemons={pokemons}></ResultBox>
+        <button onClick={createBook}>Create new Book</button>
+        <button onClick={updateBook}>Update the last Book</button>
+        <button onClick={deleteBook}>Delete the last Book</button>
+        <ResultBox pokemons={pokemons} books={books}></ResultBox>
       </header>
 
     </div>
@@ -200,10 +281,13 @@ function test(pokemons:any, ditto: any, charmander: any){
   let asads = charmander;
 }
 
-const  ResultBox = ({pokemons}:any=[]) => {
+const  ResultBox = ({pokemons, books}:any=[]) => {
   return <>
   <div className='resultBox'>
     <PokemonResult pokemons={pokemons}></PokemonResult>
+  </div>
+  <div className='resultBox'>
+    {books.map((book: Book)=>(<><div className='pokemonResult'>{book?.title}</div></>))}
   </div>
   </>
 }

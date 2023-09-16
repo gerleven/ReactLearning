@@ -55,7 +55,22 @@ function App() {
   }
 
     
-
+  const letra = `Hola a todos! yo soy el león,
+  Rugió la bestia en medio de la avenida,
+  Todos corrieron, sin entender,
+  Panic show a plena luz del día.
+  Por favor no huyan de mí,
+  Yo soy el rey de un mundo perdido,
+  Soy el rey y te destrozaré,
+  Todos los cómplices son de mi apetito.
+  No te escapes! ven a mí,
+  Desnúdate y enfrenta mis dientes
+  Yo soy el rey, el león,
+  Ven a saber lo que se siente.
+  Por favor no huyan de mí,
+  Yo soy el rey de un mundo perdido,
+  Soy el rey y te destrozaré,
+  Todos los cómplices son de mi apetito`;
     
   
 
@@ -65,7 +80,9 @@ function App() {
   <h3>Fetch</h3>
   <h3>pokemons:</h3>
   {pokemons.map((p)=>(<div className='componente'>{p.name}</div>))}
-
+  <div style={{backgroundColor: "red", width: "300px", margin: "0 30px"}}>300px</div>
+  <div style={{backgroundColor: "red", width: "400px", margin: "0 30px"}}>400px</div>
+  <p className='letra'>{letra}</p>
   </>
   return content;
 }
