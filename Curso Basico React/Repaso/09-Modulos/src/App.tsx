@@ -1,5 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+import funcionDuplicadora from "./modules/module-01";
+import funcionTriplicadora from "./modules/module-01";
+
 
 function App() {
 
@@ -12,7 +15,6 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <br/>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -21,6 +23,8 @@ function App() {
         >
           Learn React
         </a>
+        <p>{funcionDuplicadora(4)}</p>
+        <p>{funcionTriplicadora(10)}</p>
       </header>
     </div>
     </>
@@ -28,4 +32,3 @@ function App() {
 }
 
 export default App;
-
