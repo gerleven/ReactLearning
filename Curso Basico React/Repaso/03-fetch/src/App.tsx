@@ -195,18 +195,21 @@ function App() {
     //Para consumir la API de Books hecha en Node por micael gallegos:
     //E:\Ger\Dev\Angular Learning\Curso Angular by Micael Gallego\Curso Angular 2021 - Ejemplos y ejercicios\Profesor\Ejercicios\ejer6_backend\node\src\app.js
     //para correr la api ir a ese path y correr node src/app.js. luego usar la url http://127.0.0.1:8080/books/
-    fetch("http://127.0.0.1:8080/books/").then(
+    const url = "http://127.0.0.1:8080/books/";
+    fetch(url).then(
       (response)=>{return response.json(); } //Aca el .json() convierte el objeto response en un objeto Promise
     ).then((booksData)=>{ //cuando se resuelve la promesa que retorna el response.json() recibimos el array de libros en books
       setBooks(booksData);
     });
   }
+  
 
   //Post
+  // fetch(url, { method, headers, body})
   const createBook = ()=>{
-    const apiUrl = "http://127.0.0.1:8080/books/";
+    const url = "http://127.0.0.1:8080/books/";
     const newBook = {title: "nuevo libro", description: "la descripcion"}
-    fetch(apiUrl, {
+    fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -216,17 +219,18 @@ function App() {
       .then(response => response.json())
       .then(data => {
         console.log('Libro creado:', data);
-        getBooks();
+        getBooks(); //Refresh Books
         // Aquí puedes actualizar tu estado de React o realizar otras acciones después de crear el libro
       })
       .catch(error => console.error('Error al crear el libro:', error));
   }
 
   //PUT
+  // fetch(url, { method, headers, body})
   const updateBook =()=>{
-    const apiUrl = "http://127.0.0.1:8080/books/"+(books[books.length-1].id); //Actualiza siempre el ultimo libro
+    const url = "http://127.0.0.1:8080/books/"+(books[books.length-1].id); //Actualiza siempre el ultimo libro
     const newBook = {title: "nuevo libro actualizado", description: "la descripcion actualizada"}
-    fetch(apiUrl, {
+    fetch(url, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -243,11 +247,12 @@ function App() {
   }
 
   //DELETE
+  //fetch(url, {method: "DELETE"});
   const deleteBook=()=>{
     const id = books[books.length-1].id; //Borra siempre el ultimo libro
-    const apiUrl = "http://127.0.0.1:8080/books/"+id;
+    const url = "http://127.0.0.1:8080/books/"+id;
 
-    fetch(apiUrl, {
+    fetch(url, {
       method: "DELETE"
     }).then(response => {
       if (!response.ok) {
