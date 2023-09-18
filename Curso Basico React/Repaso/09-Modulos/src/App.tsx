@@ -28,10 +28,10 @@ function App() {
         >
           Learn React
         </a>
-        <p>{duplicar(4)}</p>
+        {/* <p>{duplicar(4)}</p>
         <p>{funcionDuplicadora(4)}</p>
         <p>{triplicar(4)}</p>
-        <p>{funcionTriplicadora(4)}</p>
+        <p>{funcionTriplicadora(4)}</p> */}
       </header>
     </div>
     </>
