@@ -5,22 +5,11 @@ import useOnlineStatus from "./CustomHooks/useOnlineStatus"
 import useFormInput from './CustomHooks/useFormInput';
 
 function App() {
-  const [value, setValue]=useState(false);
-  
-
-  function handleClick() {
-    setValue(prev=>(!prev))
-  }
-
-  
-
   return (
     <>
     <div className="App">
       <header className="App-header">
-    <StatusBar></StatusBar>
-        <button onClick={handleClick}>Show Child Component</button>
-        {value&&<ChildComponent></ChildComponent>}
+        <StatusBar></StatusBar>
         <FormHook></FormHook>
       </header>
     </div>
@@ -54,23 +43,5 @@ function StatusBar(){
     {showStatusBar&&<p>{isOnline ? '✅ Conectado' : '❌ Desconectado'}</p>}
     <br/><p>(Puedes Prender y apagar el wifi para cambiara este estado)</p>
   </div>
-  </>
-}
-
-function ChildComponent(){
-  const [value, setValue]=useState(0);
-  const [value2, setValue2]=useState(0);
-
-  useEffect(()=>{
-    console.log("Efecto ejecutado"); //Los efecto se ejecutan al montar el componente y cada vez que se re-renderiza
-    return ()=>{console.log("Efecto Saneado");} //Se ejecuta cuando se desmonta el omponente y justo antes de cada nuevo renderizado
-  }, [value2]);
-
-  function handleClick() {
-    setValue(prev=>(prev+1))
-  }
-  return <>
-  <p>Child Component</p>
-  <button onClick={handleClick}>Click me</button>
   </>
 }
