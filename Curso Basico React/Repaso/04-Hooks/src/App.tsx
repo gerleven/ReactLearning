@@ -27,7 +27,7 @@ function FormHook(){
   
     <label> Nombre: <input value={nombreInputProps.value} onChange={nombreInputProps.onChange}/></label> {/* Como nombreInputProps tiene un objeto {value, onChange}  podriamos simplificar ese value={} y onChange={} simplemente en un {...nombreInputProps} */}
     <label> Apellido: <input {...apellidoInputProps}/></label>
-    <p><b>Buenos días, {nombreInputProps.value} {apellidoInputProps.value}.</b></p>
+    <p><b>Buenos días, {nombreInputProps.value??"Escribe un nombre..."} {apellidoInputProps.value}.</b></p>
   </>
 }
 
