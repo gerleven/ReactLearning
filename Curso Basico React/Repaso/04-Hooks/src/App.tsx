@@ -24,16 +24,12 @@ function ReactiveValuesBetweeHooks(){
   
   const reactiveValueHook = useReactiveValue(externalValue); //El Hook recibe el valor reactivo y su useEffect lo incluira como dependencia, sincronizandose cada vez que extgernalValue cambie.
 
-  const handleUpdateExternalValue=()=>{
-    setExternalValue(prev=>prev+" updaed!");
-  }
   const handleChangeInput=(e:any)=>{
     setExternalValue(e.target.value);
   }
 
   return <>
   <div className='componente'>
-    <button onClick={handleUpdateExternalValue}>Update external value</button>
     <div><label>External value string: <input type="text" value={externalValue} onChange={handleChangeInput}/></label></div>
     
     {reactiveValueHook}
@@ -50,7 +46,6 @@ function FormHook(){
   return <>
   
     <label> Nombre: <input value={nombreInputProps.value} onChange={nombreInputProps.onChange}/></label>
-    {/* Como nombreInputProps tiene un objeto {value, onChange}  podriamos simplificar ese value={} y onChange={} simplemente en un {...nombreInputProps} */}
     <label> Apellido: <input {...apellidoInputProps}/></label>
     
     <p><b>Buenos días, {nombreInputProps.value??"Escribe un nombre..."} {apellidoInputProps.value}.</b></p>
