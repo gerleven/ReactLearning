@@ -4,7 +4,7 @@ import {useState, useEffect} from "react";
 import useOnlineStatus from "./CustomHooks/useOnlineStatus"
 import useFormInput from './CustomHooks/useFormInput';
 
-function App() {
+export default function App() {
   return (
     <>
     <div className="App">
@@ -17,7 +17,7 @@ function App() {
   );
 }
 
-export default App;
+
 
 function FormHook(){
   const nombreInputProps = useFormInput(); //Este custom hook devuelve un objeto {value, onChange}
@@ -25,8 +25,10 @@ function FormHook(){
 
   return <>
   
-    <label> Nombre: <input value={nombreInputProps.value} onChange={nombreInputProps.onChange}/></label> {/* Como nombreInputProps tiene un objeto {value, onChange}  podriamos simplificar ese value={} y onChange={} simplemente en un {...nombreInputProps} */}
+    <label> Nombre: <input value={nombreInputProps.value} onChange={nombreInputProps.onChange}/></label>
+    {/* Como nombreInputProps tiene un objeto {value, onChange}  podriamos simplificar ese value={} y onChange={} simplemente en un {...nombreInputProps} */}
     <label> Apellido: <input {...apellidoInputProps}/></label>
+    
     <p><b>Buenos días, {nombreInputProps.value??"Escribe un nombre..."} {apellidoInputProps.value}.</b></p>
   </>
 }
