@@ -3,6 +3,7 @@ import './App.css';
 import {useState, useEffect} from "react";
 import useOnlineStatus from "./CustomHooks/useOnlineStatus"
 import useFormInput from './CustomHooks/useFormInput';
+import useReactiveValue from './CustomHooks/useReactiveValues';
 
 export default function App() {
   return (
@@ -11,10 +12,33 @@ export default function App() {
       <header className="App-header">
         <StatusBar></StatusBar>
         <FormHook></FormHook>
+        <ReactiveValuesBetweeHooks></ReactiveValuesBetweeHooks>
       </header>
     </div>
     </>
   );
+}
+
+function ReactiveValuesBetweeHooks(){
+  const [externalValue, setExternalValue]=useState(""); //Este es un valor reactivo
+  
+  const reactiveValueHook = useReactiveValue(externalValue); //El Hook recibe el valor reactivo y su useEffect lo incluira como dependencia, sincronizandose cada vez que extgernalValue cambie.
+
+  const handleUpdateExternalValue=()=>{
+    setExternalValue(prev=>prev+" updaed!");
+  }
+  const handleChangeInput=(e:any)=>{
+    setExternalValue(e.target.value);
+  }
+
+  return <>
+  <div className='componente'>
+    <button onClick={handleUpdateExternalValue}>Update external value</button>
+    <div><label>External value string: <input type="text" value={externalValue} onChange={handleChangeInput}/></label></div>
+    
+    {reactiveValueHook}
+  </div>
+  </>
 }
 
 
@@ -35,9 +59,9 @@ function FormHook(){
 
 function StatusBar(){
   const [showStatusBar, setShowStatusBar]=useState(true);
-  
+    
   const isOnline = useOnlineStatus();
-  
+    
   return <>
   <div className='componente'>
     <button onClick={()=>{setShowStatusBar(prev=>!prev)}}>Show Status bar</button>

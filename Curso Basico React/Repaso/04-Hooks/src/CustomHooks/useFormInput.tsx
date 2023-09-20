@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 export default function useFormInput(){
     const [value, setValue] = useState("");
 
-    const handleOnValueChange=(e)=>{
+    const handleOnValueChange=(e: any)=>{
         setValue(e.target.value);
     }
 
