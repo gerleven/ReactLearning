@@ -4,11 +4,14 @@ export default function useReactiveValue(reactiveValue: string){ //Recibimos un 
     const [internalValue, setInternalValue] = useState("");
     const [joinValues, setJoinValues] = useState("");
     
+    console.log("Hook Ejecutado!"); //Si el padre se renderiza de nuevo se vuelve a ejecutar el Hook y por lo tanto este console.log
+
     useEffect(()=>{
-        setJoinValues(reactiveValue+"-"+internalValue)
+        setJoinValues(reactiveValue+"-"+internalValue) //Ejecutar de nevo el hook cuando se renderice de nuevo el padre no implica necesariamente que se ejecute este efecto, el mismo se ejecuta o no dependiende de su array de dependencias
         console.log("Efecto sincronizado!");
-    },[internalValue, reactiveValue]); //Este Efecto se vuelve a sincronizar cada vez que el valor reactivo reactiveValue cambie.
-    
+    },[internalValue, reactiveValue]);
+
+
     const handleChangeInput=(e: any)=>{
         setInternalValue(e.target.value);
       }
@@ -22,3 +25,5 @@ export default function useReactiveValue(reactiveValue: string){ //Recibimos un 
     </div>
     </>;
 }
+
+  

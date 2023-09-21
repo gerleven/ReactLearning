@@ -11,10 +11,12 @@ export default function App() {
     <>
     <div className="App">
       <header className="App-header">
-        <StatusBar></StatusBar>
-        <FormHook></FormHook>
+        {/* <StatusBar></StatusBar>
+        <FormHook></FormHook> */}
         <ReactiveValuesBetweeHooks></ReactiveValuesBetweeHooks>
-        <EventHandlerHooks></EventHandlerHooks>
+        {/* <EventHandlerHooks></EventHandlerHooks>
+        <MiComponente prop1="hola"></MiComponente> */}
+        
       </header>
     </div>
     </>
@@ -24,8 +26,12 @@ function EventHandlerHooks(){
   const [pokemon, setPokemon]=useState("pikachu"); //Este es un valor reactivo
   const url = "https://pokeapi.co/api/v2/pokemon/";
 
-  const onReceiveNotification=(msg: string)=>{console.log("#### Notificacion: "+msg.toUpperCase())}
-  const shoNotification=(msg: string)=>{console.log(">>> Message: "+msg.toLowerCase())}
+  const onReceiveNotification=(msg: string)=>{
+    console.log("#### Notificacion: "+msg.toUpperCase())
+  }
+  const shoNotification=(msg: string)=>{
+    console.log(">>> Message: "+msg.toLowerCase())
+  }
 
   //Llamamos 2 veces al mismo hook al cual le pasamos un event handler distinto cada vez
   useEventHandler(url, pokemon, onReceiveNotification);
@@ -35,18 +41,29 @@ function EventHandlerHooks(){
 }
 
 function ReactiveValuesBetweeHooks(){
-  const [externalValue, setExternalValue]=useState(""); //Este es un valor reactivo
+  const [externalValue, setExternalValue]=useState(""); //Este valor reactivo es pasado al Hook, 
+  const [value, setValue]=useState(""); //Este es un valor reactivo pero no sera pasado al hook
   
   const reactiveValueHook = useReactiveValue(externalValue); //El Hook recibe el valor reactivo y su useEffect lo incluira como dependencia, sincronizandose cada vez que extgernalValue cambie.
 
   const handleChangeInput=(e:any)=>{
     setExternalValue(e.target.value);
   }
+  const handleClick=()=>{
+    setValue(prev=>prev+" updated!");
+  }
+
+  useEffect(()=>{
+    //Actualizar externalValue renderiza de nuevo ReactiveValuesBetweenHooks ejecutando de nuevo su codigo, pero este efecto se ejecuta o no segun el array de dependencias []
+    console.log("useEffect de ReactiveValuesBetweeHooks sincronizado!"); //En este caso no se ejecutara porque lo hara solo durante el mount.
+  },[]);
+
+  // console.log("Esto tambien se ejecuta de nuevo con cada nuevo renderizado, por lo tanto actualizar externalValue imprime este console log");
 
   return <>
   <div className='componente'>
+    <button onClick={handleClick}>Renderizar de nuevo solo el padre - Value: {value}</button>
     <div><label>External value string: <input type="text" value={externalValue} onChange={handleChangeInput}/></label></div>
-    
     {reactiveValueHook}
   </div>
   </>
@@ -80,4 +97,49 @@ function StatusBar(){
     <br/><p>(Puedes Prender y apagar el wifi para cambiara este estado)</p>
   </div>
   </>
+}
+
+
+function MiComponente({prop1}: any){
+  const [value, setValue]=useState(0); //Este es un valor reactivo
+  
+    
+  console.log("Nuevo Renderizado");
+  // Con cada nuevo renderizado la funcion MiComponente se ejecuta de nuevo, por lo tanto actualizar alguna prop o algun estado imprime este console log
+  
+  useEffect(()=>{
+    console.log("useEffect 1 sincronizado!");
+    //Este efecto se ejecuta con cada nuevo renderizado (por no tener dependencias), es decir si cambie value o prop1
+  });
+  
+  useEffect(()=>{
+    console.log("useEffect 2 sincronizado!");
+    //Este efecto no se ejecutara con cada nuevo renderizado, lo hara solo la primero vez
+  },[]);
+  
+  useEffect(()=>{
+    console.log("useEffect 3 sincronizado!");
+    //Este efecto no se ejecutara con cada nuevo renderizado, lo hara solo cuando cambie la dependencia [value]
+  },[value]);
+  
+  const handleChangeInput=(e:any)=>{setValue(e.target.value);}
+
+  /* VARIABLE DE ESTADO -VS- VARIABLE NORMAL */
+  // el OnClick va a incrementar el count (podemos verlo por consola), pero el boton no se renderiza de nuevo por lo tanto no muestra el valor actualizado
+  // si cambias alguna prop o estado provocando un nuevo renderizado entonces se ejecuta todo esto de nuevo y count vuelve a ser 0.
+  // (Ahi esta la diferencia entre variable normal y variable de estado)
+  
+  let count = 0; // Esto se vuelve a ejecutar con cada nuevo renderizado
+
+  function increase(){
+    count++;
+    console.log("count: "+count);
+  }
+  
+  return (<div>
+    <p>prop1: {prop1}</p>
+    <label>Value: <input type="text" value={value} onChange={handleChangeInput}/></label>
+
+    <button onClick={increase}>Count++ {count}</button>
+    </div>);
 }
