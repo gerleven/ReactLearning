@@ -4,6 +4,7 @@ import ComponenteExterno from './Componentes/ComponenteExterno';
 import React from 'react';
 import ComponenteCicleDeVida from './Ciclo-de-vida/ComponenteCicloDeVida';
 import ComponenteFuncionalCicleDeVida from './Ciclo-de-vida/ComponenteFuncionalCicloDeVida';
+import MiComponente from './Renderizados/MiComponente';
 
 
 export default function App() {
@@ -12,6 +13,9 @@ export default function App() {
   
   return (
     <>
+    <MiComponente prop1="hola"></MiComponente>
+
+
     Componente de clase con ciclo de vida:
     <div className='componente'>
       {show&&<ComponenteCicleDeVida prop1='hola' prop2={2}></ComponenteCicleDeVida>}
