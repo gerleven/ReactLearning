@@ -4,6 +4,7 @@ import {useState, useEffect} from "react";
 import useOnlineStatus from "./CustomHooks/useOnlineStatus"
 import useFormInput from './CustomHooks/useFormInput';
 import useReactiveValue from './CustomHooks/useReactiveValues';
+import useEventHandler from "./CustomHooks/useEventHandler";
 
 export default function App() {
   return (
@@ -13,10 +14,24 @@ export default function App() {
         <StatusBar></StatusBar>
         <FormHook></FormHook>
         <ReactiveValuesBetweeHooks></ReactiveValuesBetweeHooks>
+        <EventHandlerHooks></EventHandlerHooks>
       </header>
     </div>
     </>
   );
+}
+function EventHandlerHooks(){
+  const [pokemon, setPokemon]=useState("pikachu"); //Este es un valor reactivo
+  const url = "https://pokeapi.co/api/v2/pokemon/";
+
+  const onReceiveNotification=(msg: string)=>{console.log("#### Notificacion: "+msg.toUpperCase())}
+  const shoNotification=(msg: string)=>{console.log(">>> Message: "+msg.toLowerCase())}
+
+  //Llamamos 2 veces al mismo hook al cual le pasamos un event handler distinto cada vez
+  useEventHandler(url, pokemon, onReceiveNotification);
+  useEventHandler(url, "ditto", shoNotification);
+  
+  return <><p>EventHandlerHooks</p></>
 }
 
 function ReactiveValuesBetweeHooks(){
