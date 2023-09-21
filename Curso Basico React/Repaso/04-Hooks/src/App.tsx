@@ -5,23 +5,73 @@ import useOnlineStatus from "./CustomHooks/useOnlineStatus"
 import useFormInput from './CustomHooks/useFormInput';
 import useReactiveValue from './CustomHooks/useReactiveValues';
 import useEventHandler from "./CustomHooks/useEventHandler";
+// import  { useEventHandlerEffectEvent } from './CustomHooks/useEventHandlerNoReactive';
+import useEventHandlerNoReactive from './CustomHooks/useEventHandlerNoReactive';
 
 export default function App() {
   return (
     <>
     <div className="App">
       <header className="App-header">
-        {/* <StatusBar></StatusBar>
-        <FormHook></FormHook> */}
-        <ReactiveValuesBetweeHooks></ReactiveValuesBetweeHooks>
-        {/* <EventHandlerHooks></EventHandlerHooks>
-        <MiComponente prop1="hola"></MiComponente> */}
+        {/* <MiComponente prop1="hola"></MiComponente> */}
+        {/* <StatusBar></StatusBar> */}
+        {/* <FormHook></FormHook> */}
+        {/* <ReactiveValuesBetweeHooks></ReactiveValuesBetweeHooks> */}
+        {/* <EventHandlerHooks></EventHandlerHooks> */}
+        {/* <UseEffectEventComponent></UseEffectEventComponent> */}
+        <EventHandlerHooksNoReactive></EventHandlerHooksNoReactive>
         
       </header>
     </div>
     </>
   );
 }
+
+function EventHandlerHooksNoReactive(){
+  const fun1 = (msg: string)=>{console.log("### Console log notificacion: "+msg)}
+  const fun2 = (msg: string)=>{console.log("%%% Alert Notificacion: "+msg)}
+
+  const url = "https://pokeapi.co/api/v2/pokemon/";
+  const [pokemon, setPokemon]=useState("pikachu"); //Este es un valor reactivo
+  const [showNotificationFunction, setShowNotificationFunction] = useState<Function>(()=>fun1);
+  
+  const setFunction1=()=>{
+    setShowNotificationFunction(fun1);
+  }
+  
+  const setFunction2=()=>{
+    setShowNotificationFunction(fun2);
+  }
+
+  // Si el componente padre tuviese la capacidad de cambiar la funcion que estamos pasando como controlador de evento como sucede en este caso,
+  //el efecto interno del hook se sincronizaria cada vez que cambie la funcion (si es que la tiene en su array de dependencia)
+  useEventHandlerNoReactive(url, pokemon, showNotificationFunction);
+  
+  return <>
+  <p>EventHandlerHooksNoReactive</p>
+  {/* <button onClick={()=>test("")}>Test</button> */}
+  <button onClick={setFunction1}>Cambiar a la Funcion 1</button>
+  <button onClick={setFunction2}>Cambiar a la Funcion 2</button>
+  </>
+}
+
+function UseEffectEventComponent(){
+  const [pokemon, setPokemon]=useState("pikachu"); //Este es un valor reactivo
+  const url = "https://pokeapi.co/api/v2/pokemon/";
+
+  const onReceiveNotification=(msg: string)=>{
+    console.log("#### Notificacion: "+msg.toUpperCase())
+  }
+  const shoNotification=(msg: string)=>{
+    console.log(">>> Message: "+msg.toLowerCase())
+  }
+
+  //Llamamos 2 veces al mismo hook al cual le pasamos un event handler distinto cada vez
+  // useEventHandlerEffectEvent(url, pokemon, onReceiveNotification);
+  
+  return <><p>EventHandler No Reactive</p></>
+}
+
 function EventHandlerHooks(){
   const [pokemon, setPokemon]=useState("pikachu"); //Este es un valor reactivo
   const url = "https://pokeapi.co/api/v2/pokemon/";
