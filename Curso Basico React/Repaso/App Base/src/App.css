@@ -39,12 +39,11 @@
 }
 
 .componente{
-  background-color: #61dafb;
-  border: #282c34 2px solid;
+  background-color: #e7faff;
+  border: #090541 2px solid;
   border-radius: 5px;
-  padding: 0 15px;
-  width: 30vw;
-  color: black;
+  color: #282c34;
   font-size: medium;
   margin: 5px;
+  padding: 0 15px;
 }
