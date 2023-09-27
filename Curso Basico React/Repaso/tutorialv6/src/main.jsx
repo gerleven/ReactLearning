@@ -7,7 +7,13 @@ import Root from "./routes/root.jsx"
 import {loader as rootLoader, action as rootAction} from "./routes/root.jsx"
 
 import ErrorPage from "./error-page"
+
 import Contact from "./routes/contact"
+import {loader as contactLoader} from "./routes/contact"
+
+import EditContact from "./routes/edit";
+import {loader as contactEditLoader} from "./routes/edit"
+
 
 const myRouter = createBrowserRouter([
   {
@@ -20,6 +26,12 @@ const myRouter = createBrowserRouter([
       {
         path: "contacts/:contactId",
         element: <Contact/>,
+        loader: contactLoader,
+      },
+      {
+        path: "contacts/:contactId/edit",
+        element: <EditContact />,
+        loader: contactEditLoader,
       },
     ],
   },
