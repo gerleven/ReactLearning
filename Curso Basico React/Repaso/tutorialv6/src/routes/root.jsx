@@ -62,18 +62,23 @@ export default function Root() {
                 <li key={contact.id}>
                   <NavLink
                     to={`contacts/${contact.id}`}
-                    className={({isActive, isPending})=>(isActive ? "active" : isPending? "pending" : "")}
-                    >
-                      {({isActive,isPending})=>(<>{contact.first || contact.last ? (
-                      <>
-                        {contact.first} {contact.last}
-                      </>
-                      ) : (
-                        <i>No Name</i>
-                      )}{" "}
-                      {isPending && <>⏳</>}
-                      {contact.favorite && <span>★</span>}</>)}
-                    
+                    className={({isActive, isPending})=>(isActive ? "active" : isPending? "pending" : "")}>
+                      {
+                        ({isActive,isPending})=>(
+                          <>
+                            {contact.first || contact.last ? (
+                            <>
+                              {contact.first} {contact.last}
+                            </>
+                            ) : (
+                              <i>No Name</i>
+                            )}{" "}
+                            {isPending && <>⏳</>}
+                            {isActive?<span>✔</span>:<></>}
+                            {contact.favorite && <span>★</span>}
+                          </>
+                        )
+                      }
                   </NavLink>
                 </li>
               ))}
