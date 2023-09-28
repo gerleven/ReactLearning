@@ -1,4 +1,4 @@
-import { Outlet, Link, useLoaderData, useActionData, Form } from "react-router-dom";
+import { Outlet, Link, useLoaderData, useActionData, Form, redirect } from "react-router-dom";
 import { getContacts, createContact } from "../contacts"
 
 //Esta funcion sera invocada cuando el usuario acceda a la ruta "/" para cargar de manera asincronica los contactos que luego usamos para generar los Links de manera dinamica
@@ -8,9 +8,9 @@ export async function loader(){
 }
 
 //Gracias a este action y al <Form method="post"> podemos hacer el post para crear un nuevo contacto sin tener que usar useState, ni useEffect ni fetch(url, post) ni nada.
-export async function action( ) {
+export async function action() {
     const contact = await createContact();
-    return { contact };
+    return redirect(`/contacts/${contact.id}/edit`);
   }
 
 
