@@ -9,11 +9,13 @@ import {loader as rootLoader, action as rootAction} from "./routes/root.jsx"
 import ErrorPage from "./error-page"
 
 import Contact from "./routes/contact"
-import {loader as contactLoader} from "./routes/contact"
+import {loader as contactLoader, action as contactAction} from "./routes/contact"
 
 import EditContact from "./routes/edit";
-import {loader as contactEditLoader, action as contactAction} from "./routes/edit"
+import {loader as contactEditLoader, action as contactEditAction} from "./routes/edit"
 
+//Destroy
+import {action as destroyAction} from "./routes/destroy"
 
 const myRouter = createBrowserRouter([
   {
@@ -27,12 +29,17 @@ const myRouter = createBrowserRouter([
         path: "contacts/:contactId",
         element: <Contact/>,
         loader: contactLoader,
+        action: contactAction,
       },
       {
         path: "contacts/:contactId/edit",
         element: <EditContact />,
         loader: contactEditLoader,
-        action: contactAction
+        action: contactEditAction
+      },
+      {
+        path: "contacts/:contactId/destroy",
+        action: destroyAction,
       },
     ],
   },

@@ -6,6 +6,10 @@ export async function loader({params}){
   return { contact };
 }
 
+export function action(){
+  debugger
+}
+
 export default function Contact() {
   const { contact } = useLoaderData();
   // const contact = {
@@ -55,15 +59,16 @@ export default function Contact() {
           <Form action="edit">
             <button type="submit">Edit</button>
           </Form>
+
+          
           <Form
             method="post"
-            action="destroy"
+            // <-- Si omitimos el action se usara el action default, que seria la ruta en la cual el Form fue renderizado, es decir /contacts
+            // action={"/contacts/"+contact.id+"/destroy"} //<-- Podriamos porner el path completo, o usar 
+            action={"destroy"} // <-- o usar el path relativo
+            //action={"/destroy"} // <-- ojo con no poner "/destroy" esto redirige al home/destroy y esa ruta no existe
             onSubmit={(event) => {
-              if (
-                !confirm(
-                  "Please confirm you want to delete this record."
-                )
-              ) {
+              if (!confirm("Please confirm you want to delete this record.")) {
                 event.preventDefault();
               }
             }}
