@@ -7,10 +7,9 @@ export async function loader({params}){
 }
 export async function action({request, params}){
   const formData = await request.formData();
-  const updates = Object.fromEntries(formData);
+  const updates = Object.fromEntries(formData); //El Object.fromEntries retorna el objeto {first, last, twietter, avatar, notes}
   await updateContact(params.contactId, updates);
-  const asd = redirect(`/contacts/${params.contactId}`)
-  return asd;
+  return redirect(`/contacts/${params.contactId}`) //El redirect retorna un objeto Response.
 }
 
 export default function EditContact() {
