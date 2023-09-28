@@ -1,4 +1,4 @@
-import { Outlet, Link, NavLink, useLoaderData, useActionData, Form, redirect } from "react-router-dom";
+import { Outlet, Link, NavLink, useLoaderData, useActionData, Form, redirect, useNavigation  } from "react-router-dom";
 import { getContacts, createContact } from "../contacts"
 
 //Esta funcion sera invocada cuando el usuario acceda a la ruta "/" para cargar de manera asincronica los contactos que luego usamos para generar los Links de manera dinamica
@@ -16,7 +16,7 @@ export async function action() {
 
 export default function Root() {
     const {contacts} = useLoaderData();
-    
+    const navigation = useNavigation(); //navigation has this props: [state, location, formData, json, text, formAction, formMethod]
     return (
       <>
         <div id="sidebar">
@@ -97,7 +97,7 @@ export default function Root() {
 
         </div>
 
-        <div id="detail">
+        <div id="detail" className={navigation.state==="loading"?"loading":""}>
             <Outlet/>
         </div>
       </>
