@@ -237,6 +237,10 @@ i {
 #sidebar nav a.pending {
   color: hsl(224, 98%, 58%);
 }
+#sidebar nav a.pending {
+  background: hsl(224, 22%, 79%);
+  color: white;
+}
 
 #detail {
   flex: 1;

@@ -1,4 +1,4 @@
-import { Outlet, Link, useLoaderData, useActionData, Form, redirect } from "react-router-dom";
+import { Outlet, Link, NavLink, useLoaderData, useActionData, Form, redirect } from "react-router-dom";
 import { getContacts, createContact } from "../contacts"
 
 //Esta funcion sera invocada cuando el usuario acceda a la ruta "/" para cargar de manera asincronica los contactos que luego usamos para generar los Links de manera dinamica
@@ -44,31 +44,37 @@ export default function Root() {
                 <button type="submit">New</button>
             </Form>
           </div>
-          {/* <nav>
-            <ul>
+
+
+          <nav>
+            {/* <ul>
               <li>
                 <Link to={`/contacts/1`}>Your Name</Link>
               </li>
               <li>
                 <Link to={`/contacts/2`}>Your Friend</Link>
               </li>
-            </ul>
-          </nav> */}
+            </ul> */}
 
           {contacts.length ? (
             <ul>
               {contacts.map((contact) => (
                 <li key={contact.id}>
-                  <Link to={`contacts/${contact.id}`}>
-                    {contact.first || contact.last ? (
+                  <NavLink
+                    to={`contacts/${contact.id}`}
+                    className={({isActive, isPending})=>(isActive ? "active" : isPending? "pending" : "")}
+                    >
+                      {({isActive,isPending})=>(<>{contact.first || contact.last ? (
                       <>
                         {contact.first} {contact.last}
                       </>
-                    ) : (
-                      <i>No Name</i>
-                    )}{" "}
-                    {contact.favorite && <span>★</span>}
-                  </Link>
+                      ) : (
+                        <i>No Name</i>
+                      )}{" "}
+                      {isPending && <>⏳</>}
+                      {contact.favorite && <span>★</span>}</>)}
+                    
+                  </NavLink>
                 </li>
               ))}
             </ul>
@@ -77,6 +83,8 @@ export default function Root() {
               <i>No contacts</i>
             </p>
           )}
+          </nav>
+
 
           
 
@@ -90,5 +98,3 @@ export default function Root() {
       </>
     );
   }
-
-  
