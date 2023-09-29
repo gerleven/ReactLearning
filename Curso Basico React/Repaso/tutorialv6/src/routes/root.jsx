@@ -1,4 +1,4 @@
-import { Outlet, Link, NavLink, useLoaderData, useActionData, Form, redirect, useNavigation  } from "react-router-dom";
+import { Outlet, Link, NavLink, useLoaderData, useActionData, Form, redirect, useNavigation, useSubmit  } from "react-router-dom";
 import { getContacts, createContact } from "../contacts"
 import { useState, useEffect } from "react";
 
@@ -20,6 +20,7 @@ export async function action() {
 export default function Root() {
     const {contacts, searchParams} = useLoaderData();
     const navigation = useNavigation(); //navigation has this props: [state, location, formData, json, text, formAction, formMethod]
+    const submit = useSubmit();
     
     //Una forma de mantener sincronizado el value del Search con el searchParams de la URL seria esta:
     // const [searchValue, setSearchValue] = useState("");
@@ -40,7 +41,9 @@ export default function Root() {
           <h1>React Router Contacts</h1>
           <div>
             {/* Este Form no tiene method entonces por defecto la request que manda es un get (la recibe el loader) y como no tiene action=<path> lo manda a esta misma ruta donde fue renderizado*/}
-            <Form id="search-form" role="search">
+            <Form id="search-form" role="search"
+              onChange={(event)=>submit(event.currentTarget)} //El <Form> tambien tiene un onChange, con un submit dentro del onChange se haria un submit por cada cambio, y por lo tanto, la lista filtrada en tiempo real
+            >
               <input
                 id="searchNameInput"
                 aria-label="Search contacts"
