@@ -1,4 +1,4 @@
-import { Form, useLoaderData, redirect } from "react-router-dom";
+import { Form, useLoaderData, redirect, useNavigate } from "react-router-dom";
 import { getContact, updateContact } from "../contacts";
 
 export async function loader({params}){
@@ -14,7 +14,7 @@ export async function action({request, params}){
 
 export default function EditContact() {
   const { contact }  = useLoaderData();
-
+  const navigate = useNavigate();
   return (
     <Form method="post" id="contact-form">
       <p>
@@ -63,7 +63,9 @@ export default function EditContact() {
       </label>
       <p>
         <button type="submit">Save</button>
-        <button type="button">Cancel</button>
+        <button type="button" onClick={()=>{navigate(-1);}}>Cancel</button>
+        {/* El -1 es equivalente a hacer click en la fechita back del navegador, por lo tanto no quita el ultimo segmento de la url si no que vuelve a la url anteior */}
+        {/* Si estas en el home y pegas la url de http://127.0.0.1:5173/contacts/d22ov5g/edit y despues apretas Cancel */}
       </p>
     </Form>
   );
