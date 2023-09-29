@@ -2,9 +2,11 @@ import { Outlet, Link, NavLink, useLoaderData, useActionData, Form, redirect, us
 import { getContacts, createContact } from "../contacts"
 
 //Esta funcion sera invocada cuando el usuario acceda a la ruta "/" para cargar de manera asincronica los contactos que luego usamos para generar los Links de manera dinamica
-export async function loader(){
-    const contacts = await getContacts();
-    return { contacts };
+export async function loader({request}){
+    const url = new URL(request.url); //Esta request es enviado por el <Form> del search
+    const searchParams = url.searchParams.get("q");
+    const contacts = await getContacts(searchParams);
+    return { contacts, searchParams };
 }
 
 //Gracias a este action y al <Form method="post"> podemos hacer el post para crear un nuevo contacto sin tener que usar useState, ni useEffect ni fetch(url, post) ni nada.
@@ -15,20 +17,22 @@ export async function action() {
 
 
 export default function Root() {
-    const {contacts} = useLoaderData();
+    const {contacts, searchParams} = useLoaderData();
     const navigation = useNavigation(); //navigation has this props: [state, location, formData, json, text, formAction, formMethod]
     return (
       <>
         <div id="sidebar">
           <h1>React Router Contacts</h1>
           <div>
-            <form id="search-form" role="search">
+            {/* Este Form no tiene method entonces por defecto la request que manda es un get (la recibe el loader) y como no tiene action=<path> lo manda a esta misma ruta donde fue renderizado*/}
+            <Form id="search-form" role="search">
               <input
                 id="q"
                 aria-label="Search contacts"
                 placeholder="Search"
                 type="search"
                 name="q"
+                defaultValue={searchParams}
               />
               <div
                 id="search-spinner"
@@ -39,7 +43,7 @@ export default function Root() {
                 className="sr-only"
                 aria-live="polite"
               ></div>
-            </form>
+            </Form>
             <Form method="post">
                 <button type="submit">New</button>
             </Form>
