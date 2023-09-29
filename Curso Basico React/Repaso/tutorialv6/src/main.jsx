@@ -17,6 +17,8 @@ import {loader as contactEditLoader, action as contactEditAction} from "./routes
 //Destroy
 import {action as destroyAction} from "./routes/destroy"
 
+import Index from './routes'
+
 const myRouter = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +27,10 @@ const myRouter = createBrowserRouter([
     loader: rootLoader, //Recien cuando el user acceda a la ruta "/" se usara la funcion rootLoader para cargar de manera asincronica los contactos, los cuales se usan para geneerar los Links de manera dinamica con un map
     action: rootAction,
     children: [
+      {
+        index: true,
+        element: <Index/>,
+      },
       {
         path: "contacts/:contactId",
         element: <Contact/>,
