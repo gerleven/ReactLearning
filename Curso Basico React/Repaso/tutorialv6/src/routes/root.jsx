@@ -1,10 +1,11 @@
 import { Outlet, Link, NavLink, useLoaderData, useActionData, Form, redirect, useNavigation  } from "react-router-dom";
 import { getContacts, createContact } from "../contacts"
+import { useState, useEffect } from "react";
 
 //Esta funcion sera invocada cuando el usuario acceda a la ruta "/" para cargar de manera asincronica los contactos que luego usamos para generar los Links de manera dinamica
 export async function loader({request}){
     const url = new URL(request.url); //Esta request es enviado por el <Form> del search
-    const searchParams = url.searchParams.get("q");
+    const searchParams = url.searchParams.get("q") || "";
     const contacts = await getContacts(searchParams);
     return { contacts, searchParams };
 }
@@ -19,6 +20,20 @@ export async function action() {
 export default function Root() {
     const {contacts, searchParams} = useLoaderData();
     const navigation = useNavigation(); //navigation has this props: [state, location, formData, json, text, formAction, formMethod]
+    
+    //Una forma de mantener sincronizado el value del Search con el searchParams de la URL seria esta:
+    // const [searchValue, setSearchValue] = useState("");
+    // useEffect(()=>{
+    //   setSearchValue(searchParams==null?"":searchParams);
+    // },[searchParams]);
+    //value={searchValue}
+    //onChange={(e)=>{setSearchValue(e.target.value)}}
+
+    //Pero de esta forma no ahorramos la variable de estado y tener que poner el value y el onChange en el Form:
+    useEffect(()=>{
+      document.getElementById("searchNameInput").value=searchParams;
+    },[searchParams]);
+
     return (
       <>
         <div id="sidebar">
@@ -27,12 +42,11 @@ export default function Root() {
             {/* Este Form no tiene method entonces por defecto la request que manda es un get (la recibe el loader) y como no tiene action=<path> lo manda a esta misma ruta donde fue renderizado*/}
             <Form id="search-form" role="search">
               <input
-                id="q"
+                id="searchNameInput"
                 aria-label="Search contacts"
                 placeholder="Search"
                 type="search"
                 name="q"
-                defaultValue={searchParams}
               />
               <div
                 id="search-spinner"
