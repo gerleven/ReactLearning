@@ -1,6 +1,7 @@
 import { Outlet, Link, NavLink, useLoaderData, useActionData, Form, redirect, useNavigation, useSubmit  } from "react-router-dom";
 import { getContacts, createContact } from "../contacts"
 import { useState, useEffect } from "react";
+import {useSessionTime, useSessionTime2, useSessionTime3} from "../hooks/admin";
 
 //Esta funcion sera invocada cuando el usuario acceda a la ruta "/" para cargar de manera asincronica los contactos que luego usamos para generar los Links de manera dinamica
 export async function loader({request}){
@@ -21,6 +22,10 @@ export default function Root() {
     const {contacts, searchParams} = useLoaderData();
     const navigation = useNavigation(); //navigation has this props: [state, location, formData, json, text, formAction, formMethod]
     const submit = useSubmit();
+    // const remainingTime = useSessionTime();
+    const remainingTime2 = useSessionTime2();
+    const remainingTime3 = useSessionTime3();
+
     
     //Una forma de mantener sincronizado el value del Search con el searchParams de la URL seria esta:
     // const [searchValue, setSearchValue] = useState("");
@@ -115,7 +120,9 @@ export default function Root() {
           
 
 
-
+            {/* <p>Time remaining: {remainingTime}</p> */}
+            <p>Time remaining 2: {remainingTime2}</p>
+            <p>Time remaining 3: {remainingTime3}</p>
         </div>
 
         <div id="detail" className={navigation.state==="loading"?"loading":""}>
