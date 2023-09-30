@@ -19,6 +19,9 @@ import {action as destroyAction} from "./routes/destroy"
 
 import Index from './routes'
 
+import LogoutPage from "./routes/logout"
+import {loader as logoutLoader, action as logoutAction} from "./routes/logout"
+
 const myRouter = createBrowserRouter([
   {
     path: "/",
@@ -47,6 +50,12 @@ const myRouter = createBrowserRouter([
         path: "contacts/:contactId/destroy",
         action: destroyAction,
         errorElement: <>Ups! Something went wrong...</>
+      },
+      {
+        path: "logout/",
+        element: <LogoutPage></LogoutPage>,
+        loader: logoutLoader,
+        action: logoutAction,
       },
     ],
   },
