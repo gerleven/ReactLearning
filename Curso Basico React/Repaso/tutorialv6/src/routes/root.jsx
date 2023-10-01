@@ -1,11 +1,11 @@
-import {Outlet,Link,NavLink,useLoaderData,useActionData,Form,redirect,useNavigation,useSubmit,} from "react-router-dom";
+import {Outlet,Link,NavLink,useLoaderData,useActionData,Form,redirect,useNavigation,useSubmit} from "react-router-dom";
 import { getContacts, createContact } from "../contacts";
 import { useState, useEffect } from "react";
 import {useSessionTime} from "../hooks/admin";
 
 //Esta funcion sera invocada cuando el usuario acceda a la ruta "/" para cargar de manera asincronica los contactos que luego usamos para generar los Links de manera dinamica
 export async function loader({ request }) {
-  const url = new URL(request.url); //Esta request es enviado por el <Form> del search
+    const url = new URL(request.url); //Esta request es enviado por el <Form> del search
   const searchParams = url.searchParams.get("q") || "";
   const contacts = await getContacts(searchParams);
   return { contacts, searchParams };
@@ -28,6 +28,12 @@ export default function Root() {
   }, [searchParams]);
 
   const remainingTime = useSessionTime();
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      submit(event.target, {method: "get", action:"/logout"});
+    };
+
   
   return (
     <>
@@ -38,7 +44,9 @@ export default function Root() {
           <Form
             id="search-form"
             role="search"
-            onChange={(event) => submit(event.currentTarget)} //El <Form> tambien tiene un onChange, con un submit dentro del onChange se haria un submit por cada cambio, y por lo tanto, la lista filtrada en tiempo real
+            onChange={(event) => { //El <Form> tambien tiene un onChange, con un submit dentro del onChange se haria un submit por cada cambio, y por lo tanto, la lista filtrada en tiempo real
+              submit(event.currentTarget) //El event.currentTarget tiene el #id de este input y el value ingresado por el usuario: {id: search-form, value: "Ger"}
+            }}
           >
             <input
               id="searchNameInput"
@@ -104,6 +112,10 @@ export default function Root() {
       {/* <div id="detail">
         <h1>test</h1>
         <p>Time remaining 1: {remainingTime}</p>
+        <Form onSubmit={handleSubmit}>
+        <input type="text" name="username" placeholder="Username" />
+        <button type="submit">Submit</button>
+      </Form>
       </div> */}
 
       <div id="detail" className={navigation.state==="loading"?"loading":""}>

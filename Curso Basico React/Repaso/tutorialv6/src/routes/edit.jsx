@@ -2,7 +2,7 @@ import { Form, useLoaderData, redirect, useNavigate } from "react-router-dom";
 import { getContact, updateContact } from "../contacts";
 
 export async function loader({params}){
-  const contact = await getContact(params.contactId);
+    const contact = await getContact(params.contactId);
   return { contact };
 }
 export async function action({request, params}){

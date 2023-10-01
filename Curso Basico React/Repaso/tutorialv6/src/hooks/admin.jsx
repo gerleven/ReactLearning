@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSubmit, useLocation } from "react-router-dom";
 
 
-const SESSION_DURATION = 3;
+const SESSION_DURATION = (5*60);
 
 export const useSessionTime = () => {
     const [remainingTime, setRemainingTime] = useState(SESSION_DURATION);
