@@ -1,7 +1,7 @@
 import {Outlet,Link,NavLink,useLoaderData,useActionData,Form,redirect,useNavigation,useSubmit,} from "react-router-dom";
 import { getContacts, createContact } from "../contacts";
 import { useState, useEffect } from "react";
-import {useSessionTime} from "../hooks/admin";
+import {useRemainingSessionTime} from "../hooks/admin";
 
 //Esta funcion sera invocada cuando el usuario acceda a la ruta "/" para cargar de manera asincronica los contactos que luego usamos para generar los Links de manera dinamica
 export async function loader({ request }) {
@@ -27,7 +27,7 @@ export default function Root() {
     document.getElementById("searchNameInput").value = searchParams;
   }, [searchParams]);
 
-  const remainingTime = useSessionTime();
+  const remainingTime = useRemainingSessionTime();
   
   return (
     <>

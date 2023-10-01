@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
+import { useSubmit, useLocation } from "react-router-dom";
+
 
 const SESSION_DURATION = 3;
 
-export const useSessionTime = () => {
+export const useRemainingSessionTime = () => {
     const [remainingTime, setRemainingTime] = useState(SESSION_DURATION);
     let timer = 0;
+    const submit = useSubmit();
+    const location = useLocation();
   
+    //Count Down
     useEffect(() => {
       timer = setInterval(
         () => {
@@ -21,6 +26,15 @@ export const useSessionTime = () => {
         
       return ()=>{clearInterval(timer);} // Limpiar el intervalo al desmontar el componente
     }, []);
+
+    //Time Out
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        submit(null, { method: "post", action: "/logout" });
+      }, SESSION_DURATION*1000);
+  
+      return () => clearTimeout(timer);
+    }, [submit, location]);
   
     return remainingTime;
   };
