@@ -1,7 +1,7 @@
 import {Outlet,Link,NavLink,useLoaderData,useActionData,Form,redirect,useNavigation,useSubmit,} from "react-router-dom";
 import { getContacts, createContact } from "../contacts";
 import { useState, useEffect } from "react";
-import {useSessionTime1,useSessionTime2,} from "../hooks/admin";
+import {useSessionTime} from "../hooks/admin";
 
 //Esta funcion sera invocada cuando el usuario acceda a la ruta "/" para cargar de manera asincronica los contactos que luego usamos para generar los Links de manera dinamica
 export async function loader({ request }) {
@@ -27,60 +27,8 @@ export default function Root() {
     document.getElementById("searchNameInput").value = searchParams;
   }, [searchParams]);
 
-
-
-
-  //----------- TEST
-  // const SESSION_DURATION = 300;
-  // const [remainingTime, setRemainingTime] = useState(SESSION_DURATION);
-  // const [timerId, setTimerId] = useState(0);
+  const remainingTime = useSessionTime();
   
-  
-
-  // const stopTimer = () => {
-  //   console.log("4)### limpiar timer " + timerId);
-  //   clearInterval(timerId);
-  // };
-
-  // const setTheInterval = ()=>{
-  //   let timer = setInterval(() => {
-  //     console.log("4)### Funcion interna del setInterval - " + timerId);
-  //     setRemainingTime((prevRemainingTime) => {
-  //       if (prevRemainingTime > 0) {
-  //         return prevRemainingTime - 1;
-  //       }
-  //       return prevRemainingTime;
-  //     });
-  //   }, 1000);
-  //   setTimerId(timer);
-  //   console.log("4)### timer seted: "+timerId);
-  // }
-
-  // useEffect(() => {
-  //   setTheInterval();
-  //   return () => clearInterval(timerId); // Limpiar el intervalo al desmontar el componente
-  // }, []);
-
-  // // Segundo useEffect para comprobar si el tiempo se ha agotado
-  // useEffect(() => {
-  //   if (remainingTime === 0) {
-  //     console.log("4)### ¡Tiempo agotado!" + timerId);
-  //     stopTimer(); // Limpia el intervalo cuando el tiempo se agota
-  //   }
-  // }, [remainingTime]);
-
-
-  // function test2() {
-  //   remainingTime;
-  //   timer;
-  // }
-  // function test() {
-  //   remainingTime;
-  //   timerId;
-  // }
-
-  let remainingTime1 = useSessionTime1();
-  // let remainingTime2 = useSessionTime2();
   return (
     <>
       <div id="sidebar">
@@ -150,22 +98,17 @@ export default function Root() {
             </p>
           )}
         </nav>
-        {/* <p>Time remaining 2: {remainingTime1}</p> */}
+        <p>Session Time remaining: {remainingTime}</p>
       </div>
 
-      <div id="detail">
+      {/* <div id="detail">
         <h1>test</h1>
-        {/* <button onClick={test}>Test</button>
-        <button onClick={test2}>Test 2</button>
-        <button onClick={stopTimer}>Stop Timer</button>
-        <button onClick={setTheInterval}>Set Interval</button> */}
-        <p>Time remaining 1: {remainingTime1}</p>
-        {/* <p>Time remaining 2: {remainingTime2}</p> */}
-      </div>
+        <p>Time remaining 1: {remainingTime}</p>
+      </div> */}
 
-      {/* <div id="detail" className={navigation.state==="loading"?"loading":""}>
+      <div id="detail" className={navigation.state==="loading"?"loading":""}>
             <Outlet/>
-        </div> */}
+        </div>
     </>
   );
 }
