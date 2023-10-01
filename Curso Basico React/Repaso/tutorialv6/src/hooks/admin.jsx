@@ -4,7 +4,7 @@ import { useSubmit, useLocation } from "react-router-dom";
 
 const SESSION_DURATION = 3;
 
-export const useRemainingSessionTime = () => {
+export const useSessionTime = () => {
     const [remainingTime, setRemainingTime] = useState(SESSION_DURATION);
     let timer = 0;
     const submit = useSubmit();
