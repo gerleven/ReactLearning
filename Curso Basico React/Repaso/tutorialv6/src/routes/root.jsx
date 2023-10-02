@@ -22,7 +22,7 @@ export default function Root() {
   const navigation = useNavigation(); //navigation has this props: [state, location, formData, json, text, formAction, formMethod]
   const submit = useSubmit();
 
-  //Pero de esta forma no ahorramos la variable de estado y tener que poner el value y el onChange en el Form:
+  //Tradicionalmente la forma de mantener sincronizado el value del search seria con un useEffect(()=>{},[q]), una variable de estado [q,setQ] y un value={q} y onChange={setQ} en el input. Pero de esta forma no ahorramos todo eso y es mucho mas simple
   useEffect(() => {
     document.getElementById("searchNameInput").value = q;
   }, [q]);
@@ -67,14 +67,6 @@ export default function Root() {
           </Form>
         </div>
         <nav>
-          {/* <ul>
-              <li>
-                <Link to={`/contacts/1`}>Your Name</Link>
-              </li>
-              <li>
-                <Link to={`/contacts/2`}>Your Friend</Link>
-              </li>
-            </ul> */}
 
           {contacts.length ? (
             <ul>
@@ -128,11 +120,3 @@ export default function Root() {
     </>
   );
 }
-
-//Una forma de mantener sincronizado el value del Search con el searchParams de la URL seria esta:
-// const [searchValue, setSearchValue] = useState("");
-// useEffect(()=>{
-//   setSearchValue(searchParams==null?"":searchParams);
-// },[searchParams]);
-//value={searchValue}
-//onChange={(e)=>{setSearchValue(e.target.value)}}
