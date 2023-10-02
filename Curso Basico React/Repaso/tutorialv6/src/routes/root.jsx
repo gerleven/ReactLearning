@@ -6,9 +6,9 @@ import {useSessionTime} from "../hooks/admin";
 //Esta funcion sera invocada cuando el usuario acceda a la ruta "/" para cargar de manera asincronica los contactos que luego usamos para generar los Links de manera dinamica
 export async function loader({ request }) {
     const url = new URL(request.url); //Esta request es enviado por el <Form> del search
-  const searchParams = url.searchParams.get("q") || "";
-  const contacts = await getContacts(searchParams);
-  return { contacts, searchParams };
+  const q = url.searchParams.get("q") || ""; //q is the URLsearchParams
+  const contacts = await getContacts(q);
+  return { contacts, q };
 }
 
 //Gracias a este action y al <Form method="post"> podemos hacer el post para crear un nuevo contacto sin tener que usar useState, ni useEffect ni fetch(url, post) ni nada.
@@ -18,14 +18,14 @@ export async function action() {
 }
 
 export default function Root() {
-  const { contacts, searchParams } = useLoaderData();
+  const { contacts, q } = useLoaderData();
   const navigation = useNavigation(); //navigation has this props: [state, location, formData, json, text, formAction, formMethod]
   const submit = useSubmit();
 
   //Pero de esta forma no ahorramos la variable de estado y tener que poner el value y el onChange en el Form:
   useEffect(() => {
-    document.getElementById("searchNameInput").value = searchParams;
-  }, [searchParams]);
+    document.getElementById("searchNameInput").value = q;
+  }, [q]);
 
   const remainingTime = useSessionTime();
 
@@ -44,9 +44,9 @@ export default function Root() {
           <Form
             id="search-form"
             role="search"
-            onChange={(event) => { //El <Form> tambien tiene un onChange, con un submit dentro del onChange se haria un submit por cada cambio, y por lo tanto, la lista filtrada en tiempo real
-              submit(event.currentTarget) //El event.currentTarget tiene el #id de este input y el value ingresado por el usuario: {id: search-form, value: "Ger"}
-            }}
+            // onChange={(event) => {submit(event.currentTarget)}} //El <Form> tambien tiene un onChange, con un submit dentro del onChange se haria un submit por cada cambio, y por lo tanto, la lista filtrada en tiempo real
+            //El event.currentTarget tiene formData de este Form en el cual tenemos el #id del input searchNameINput y su value ingresado por el usuario: {id: searchNameInput, value: "Ger"}
+            //De todas maneras el onChange conviene ponerlo en el input y no aca, porque si en el futuro hay mas elementos en el form no sabemos si queremos hacer submit para todos, por ahora queremos hacerlo solo si cambia el input del search
           >
             <input
               id="searchNameInput"
@@ -54,6 +54,10 @@ export default function Root() {
               placeholder="Search"
               type="search"
               name="q"
+              defaultValue={q}
+              onChange={(event) => { //con un submit dentro del onChange del input se haria un submit por cada cambio, y por lo tanto, la lista filtrada en tiempo real
+                submit(event.currentTarget.form) //El event.currentTarget tiene el #id de este input y el  currentTarget.form el di del form padre de este input
+              }}
             />
             <div id="search-spinner" aria-hidden hidden={true} />
             <div className="sr-only" aria-live="polite"></div>
