@@ -27,18 +27,42 @@ export default function Root() {
     document.getElementById("searchNameInput").value = q;
   }, [q]);
 
+  //Boolean value abour if the current location is searching or not:
+  const searching = navigation.location && new URLSearchParams(navigation.location.search).has("q"); //This boolean value indicate if the app is searching something
+
   const remainingTime = useSessionTime();
 
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      submit(event.target, {method: "get", action:"/logout"});
-    };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    submit(event.target, {method: "get", action:"/logout"});
+  };
 
+  function test(){
+    console.log("state: "+navigation.state);
+  }
+
+  //Test:
+  // useEffect(()=>{
+  //   if(navigation.location){
+  //     console.log("State: "+navigation.state);
+  //     console.log("Path Name: "+navigation.location.pathname);
+  //     console.log("search query: "+navigation.location.search);
+  //     console.log("Navigation: ");
+  //     console.table(navigation.location);
+  //   }
+  // }, [navigation]);
+  // useEffect(()=>{
+  //   if(navigation.location){
+  //     console.log("State: "+navigation.state);
+  //   }
+  // }, [navigation.state]);
   
   return (
     <>
       <div id="sidebar">
         <h1>React Router Contacts</h1>
+
+        {/* Form Search */}
         <div>
           {/* Este Form no tiene method entonces por defecto la request que manda es un get (la recibe el loader) y como no tiene action=<path> lo manda a esta misma ruta donde fue renderizado*/}
           <Form
@@ -58,14 +82,17 @@ export default function Root() {
               onChange={(event) => { //con un submit dentro del onChange del input se haria un submit por cada cambio, y por lo tanto, la lista filtrada en tiempo real
                 submit(event.currentTarget.form) //El event.currentTarget tiene el #id de este input y el  currentTarget.form el di del form padre de este input
               }}
+              className={searching?"loading":""}
             />
-            <div id="search-spinner" aria-hidden hidden={true} />
+            <div id="search-spinner" aria-hidden hidden={!searching} />
             <div className="sr-only" aria-live="polite"></div>
           </Form>
           <Form method="post">
             <button type="submit">New</button>
           </Form>
         </div>
+        
+        {/* Nav */}
         <nav>
 
           {contacts.length ? (
@@ -105,14 +132,19 @@ export default function Root() {
         <p>Session Time remaining: {remainingTime}</p>
       </div>
 
-      {/* <div id="detail">
+      {/* Details */}
+      <div id="detail" className={navigation.state==="loading"?"loading":""}>
         <h1>test</h1>
-        <p>Time remaining 1: {remainingTime}</p>
+        {navigation.location && <p>Yendo a: {navigation.location.pathname} con la query: {navigation.location.search}</p>}
+        <p>Location: {navigation.location?"yes":"No"}</p>
+        {/* <p>State: {navigation.state}</p> */}
+        <button onClick={test}>Test</button>
+        {/* <p>Time remaining 1: {remainingTime}</p>
         <Form onSubmit={handleSubmit}>
         <input type="text" name="username" placeholder="Username" />
         <button type="submit">Submit</button>
-      </Form>
-      </div> */}
+      </Form> */}
+      </div>
 
       <div id="detail" className={navigation.state==="loading"?"loading":""}>
             <Outlet/>
