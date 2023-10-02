@@ -80,7 +80,8 @@ export default function Root() {
               name="q"
               defaultValue={q}
               onChange={(event) => { //con un submit dentro del onChange del input se haria un submit por cada cambio, y por lo tanto, la lista filtrada en tiempo real
-                submit(event.currentTarget.form) //El event.currentTarget tiene el #id de este input y el  currentTarget.form el di del form padre de este input
+                const isFirstSearch = (q==null);
+                submit(event.currentTarget.form, {replace: !isFirstSearch }) //El event.currentTarget tiene el #id de este input y el  currentTarget.form el di del form padre de este input
               }}
               className={searching?"loading":""}
             />
