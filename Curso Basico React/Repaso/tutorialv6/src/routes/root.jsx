@@ -133,7 +133,7 @@ export default function Root() {
       </div>
 
       {/* Details */}
-      <div id="detail" className={navigation.state==="loading"?"loading":""}>
+      {false&&<div id="detail" className={navigation.state==="loading"?"loading":""}>
         <h1>test</h1>
         {navigation.location && <p>Yendo a: {navigation.location.pathname} con la query: {navigation.location.search}</p>}
         <p>Location: {navigation.location?"yes":"No"}</p>
@@ -144,7 +144,7 @@ export default function Root() {
         <input type="text" name="username" placeholder="Username" />
         <button type="submit">Submit</button>
       </Form> */}
-      </div>
+      </div>}
 
       <div id="detail" className={navigation.state==="loading"?"loading":""}>
             <Outlet/>
