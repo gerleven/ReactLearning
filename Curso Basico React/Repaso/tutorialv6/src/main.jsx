@@ -31,32 +31,37 @@ const myRouter = createBrowserRouter([
     action: rootAction,
     children: [
       {
-        index: true,
-        element: <Index/>,
-      },
-      {
-        path: "contacts/:contactId",
-        element: <Contact/>,
-        loader: contactLoader,
-        action: contactAction,
-      },
-      {
-        path: "contacts/:contactId/edit",
-        element: <EditContact />,
-        loader: contactEditLoader,
-        action: contactEditAction
-      },
-      {
-        path: "contacts/:contactId/destroy",
-        action: destroyAction,
-        errorElement: <>Ups! Something went wrong...</>
-      },
-      {
-        path: "logout/",
-        element: <LogoutPage></LogoutPage>,
-        loader: logoutLoader,
-        action: logoutAction,
-      },
+        errorElement: <ErrorPage/>,
+        children: [
+          {
+            index: true,
+            element: <Index/>,
+          },
+          {
+            path: "contacts/:contactId",
+            element: <Contact/>,
+            loader: contactLoader,
+            action: contactAction,
+          },
+          {
+            path: "contacts/:contactId/edit",
+            element: <EditContact />,
+            loader: contactEditLoader,
+            action: contactEditAction
+          },
+          {
+            path: "contacts/:contactId/destroy",
+            action: destroyAction,
+            errorElement: <>Ups! Something went wrong...</>
+          },
+          {
+            path: "logout/",
+            element: <LogoutPage></LogoutPage>,
+            loader: logoutLoader,
+            action: logoutAction,
+          },
+        ]
+      }
     ],
   },
   
