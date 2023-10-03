@@ -114,10 +114,8 @@ export default function Root() {
                           </>
                         ) : (
                           <i>No Name</i>
-                        )}{" "}
-                        {isPending && <>⏳</>}
-                        {isActive ? <span>✔</span> : <></>}
-                        {contact.favorite && <span>★</span>}
+                        )}
+                        <span>{isPending ? "⏳" : (contact.favorite && "★")}</span>
                       </>
                     )}
                   </NavLink>
