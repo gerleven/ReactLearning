@@ -10,7 +10,7 @@ export async function action({params, request}){
   const formData = await request.formData();
   const newFavoriteValue = (formData.get("favorite") === "true")?true:false;
   const updatedEntry = {favorite: newFavoriteValue};
-  await updateContact(params.contactId, updatedEntry);
+  return updateContact(params.contactId, updatedEntry);
 }
 
 export default function Contact() {
@@ -85,9 +85,13 @@ export default function Contact() {
 }
 
 function Favorite({ contact }) {
-  // yes, this is a `let` for later
-  let favorite = contact.favorite;
   const fetcher = useFetcher();
+  
+  let favorite = contact.favorite;
+  if(fetcher.formData){
+    favorite = fetcher.formData.get("favorite")=="true";
+  }
+
   return (
     <fetcher.Form method="post">
       <button
@@ -100,6 +104,7 @@ function Favorite({ contact }) {
         }
       >
         {favorite ? "★" : "☆"}
+        {/* {fetcher.state==="loading"? "⏱": (favorite ? "★" : "☆")} */}
       </button>
     </fetcher.Form>
   );
