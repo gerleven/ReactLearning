@@ -43,18 +43,18 @@ export default function Root() {
 
   //Test:
   // useEffect(()=>{
-  //   if(navigation.location){
-  //     console.log("State: "+navigation.state);
-  //     console.log("Path Name: "+navigation.location.pathname);
-  //     console.log("search query: "+navigation.location.search);
-  //     console.log("Navigation: ");
-  //     console.table(navigation.location);
-  //   }
+    //   if(navigation.location){
+      //     console.log("State: "+navigation.state);
+      //     console.log("Path Name: "+navigation.location.pathname);
+      //     console.log("search query: "+navigation.location.search);
+      //     console.log("Navigation: ");
+      //     console.table(navigation.location);
+    //   }
   // }, [navigation]);
   // useEffect(()=>{
-  //   if(navigation.location){
-  //     console.log("State: "+navigation.state);
-  //   }
+    //   if(navigation.location){
+      //     console.log("State: "+navigation.state);
+    //   }
   // }, [navigation.state]);
   
   return (
