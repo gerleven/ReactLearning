@@ -9,7 +9,7 @@ export function action({request, params}){
 
 export default function LogoutPage() {
   return (<>
-    <div id="timeput-page">
+    <div id="timeout-page">
       <h2>Time out! ⏳🔐</h2>
       <h3>Still There?</h3>
       <i>It seems that you are not still there...</i>

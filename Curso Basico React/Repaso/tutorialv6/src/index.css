@@ -385,7 +385,7 @@ i {
   width: 100%;
 }
 
-#timeput-page {
+#timeout-page {
     display: flex;
     flex-direction: column;
     align-items: center;
