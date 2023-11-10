@@ -1,10 +1,10 @@
 import {useContext} from 'react';
-import {MyContext} from "../App";
+import {MyGlobalContext} from "../Contexto/useGlobalContext";
 import CompB from "./ComB"
 import "../App.css"
 
 const CompA = ()=>{
-    const {contador, incrementar} = useContext(MyContext);
+    const {contador, incrementar} = useContext(MyGlobalContext);
     return <>
         <div className="componente">
             <h5>Componente A externo</h5>

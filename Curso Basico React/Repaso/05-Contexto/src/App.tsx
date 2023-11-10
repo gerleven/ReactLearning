@@ -1,43 +1,21 @@
 import React, { useState } from 'react';
 import './App.css';
-import {createContext} from 'react';
 import CompA from './Components/CompA';
 
-export interface contextInterface{
-  contador: number;
-  incrementar: ()=>void;
-  duplicar: ()=>void;
-  reset: ()=>void;
-}
-export const MyContext = createContext<contextInterface>({} as contextInterface);
+import useGlobalContext, {MyGlobalContext} from './Contexto/useGlobalContext';
+import CompC from './Components/CompC';
+
 
 function App() {
-  const [miContador, setMiContador] = useState(0);
-
-  const sumarUno = ()=>{
-    setMiContador(prev=>prev+1)
-  }
-  const duplicar = ()=>{
-    (miContador==0)&&sumarUno();
-    setMiContador(prev=>prev*2)
-  }
-  const reset = ()=>{
-    setMiContador(0)
-  }
-
-  const contextDefaultValue = {
-    contador: miContador,
-    incrementar: sumarUno,
-    duplicar: duplicar,
-    reset: reset
-  }
-
+  const contextImported = useGlobalContext(); //Aca use un custom Hook por prolijidad, pero podria estar implementado directamente aca en vez de en el custom hook.
+  
   return (
     <div className="App">
       <header className="App-header">
-        <MyContext.Provider value={contextDefaultValue}>
+        <MyGlobalContext.Provider value={contextImported}>
           <CompA></CompA>
-        </MyContext.Provider>
+          <CompC></CompC>
+        </MyGlobalContext.Provider>
       </header>
     </div>
   );
