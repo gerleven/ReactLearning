@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import {createContext} from 'react';
-import CompA from './CompA/CompA';
+import CompA from './Components/CompA';
 
 export interface contextInterface{
   contador: number;
