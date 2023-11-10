@@ -15,5 +15,8 @@
     "App Base",
     "Borrador"
   ],
-  "packages": {}
+  "packages": {},
+  "dependencies": {
+    "react-router-dom": "^6.18.0"
+  }
 }

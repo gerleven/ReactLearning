@@ -19,12 +19,12 @@ function App() {
 
   useEffect(()=>{
     // startThenCatch();
-    // startAsyncAwait();
+    startAsyncAwait();
     // startNewPromiseConstructor();
     // startNewPromiseConstructorAsyncAwait();
     // startNewPromiseConstructorAsyncAwaitNoResolve();
     // startFetchCained();
-    getBooks();
+    // getBooks();
   },[]);
 
   //Fetch basico con .then() y .catch()
@@ -60,7 +60,11 @@ function App() {
   }
   const startAsyncAwait=()=>{
     console.log("start: AsyncAwait");
-    getPokemonsAsyncAwait();
+    const queRetorna = getPokemonsAsyncAwait();
+    debugger
+    queRetorna.then(
+      ()=>{console.log("Entro?")}
+    );;
   }
   
 
@@ -164,6 +168,8 @@ function App() {
       alert("Error al traer a Charmander: "+error)
     }
   }
+
+  
 
   function startFetchCained(){
     console.log("start: FetchCained");
